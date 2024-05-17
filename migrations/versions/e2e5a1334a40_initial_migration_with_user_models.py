@@ -1,6 +1,6 @@
 """initial migration with user models
 
-Revision ID: e2e5a1334a40
+Revision ID: 3987b5c5541a
 Revises: 
 Create Date: 2024-05-17 12:31:14.370963
 
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'e2e5a1334a40'
+revision = '3987b5c5541a'
 down_revision = None
 branch_labels = None
 depends_on = None

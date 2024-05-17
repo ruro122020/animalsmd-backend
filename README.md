@@ -1,4 +1,4 @@
-Backend flask application using sqlite.
+Backend flask application using postgresql.
 
 After installing packages, to use flask session object for cookies, do the following:
 
