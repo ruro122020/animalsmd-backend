@@ -17,6 +17,8 @@ class User(db.Model):
   email = db.Column(db.String, nullable=False, unique=True)
   _password_hash = db.Column(db.String, nullable=False)
 
+  #relationships
+
   @validates('name')
   def validate_name(self, key, name):
     if type(name) == str and len(name) > 3:
