@@ -30,8 +30,6 @@ app.json.compact = False
 #session key configuration
 app.secret_key= os.getenv('SECRET_KEY')
 
-
-
 # Define metadata, instantiate db
 metadata = MetaData(naming_convention={
     "fk": "fk_%(table_name)s_%(column_0_name)s_%(referred_table_name)s",

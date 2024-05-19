@@ -28,6 +28,8 @@ Leave postgres terminal running
 
 2. Start the flask application in another ubuntu terminal in the project root directory
 
+NOTE: MAKE SURE YOU ARE IN PIPENV SHELL when you run python app.py. Being in the shell will make the connection from the database to the api possible. If you are not in the shell, flask won't be able to connect to the postgresql database
+
 ```
 pipenv shell
 python app.py

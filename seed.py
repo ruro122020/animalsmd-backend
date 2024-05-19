@@ -8,7 +8,7 @@ from faker import Faker
 
 # Local imports
 from app import app
-from models.models import User
+from models.models import User, Species
 from config import db
 
 if __name__ == '__main__':
@@ -20,7 +20,7 @@ if __name__ == '__main__':
     print('Deleting all records...')
     User.query.delete()
 
-
+#USERS FAKE DATA
     users = []
     usernames = []
     for i in range(5):
@@ -44,6 +44,10 @@ if __name__ == '__main__':
     db.session.add_all(users)
     db.session.commit()
 
+#SPECIES DATA
+    # species = Species(type='dog')
+    # db.session.add(species)
+    # db.session.commit()
 
 
 print('Complete.')
