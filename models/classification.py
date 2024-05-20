@@ -7,3 +7,6 @@ class Classification(db.Model):
 
   id = db.Column(db.Integer, primary_key=True)
   classification = db.Column(db.String, nullable=False)
+
+  #relationships
+  species_classification = db.relationship('SpeciesClassification', back_populates='classification')

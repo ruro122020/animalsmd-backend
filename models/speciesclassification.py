@@ -8,3 +8,6 @@ class SpeciesClassification(db.Model):
   species_id = db.Column(db.Integer, db.ForeignKey('species.id'))
 
   
+  #relationships
+  classification = db.relationship('Classification', back_populates='species_classification')
+  species = db.relationship('Species', back_populates='species_classification')

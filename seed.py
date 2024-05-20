@@ -8,7 +8,7 @@ from faker import Faker
 
 # Local imports
 from app import app
-from models.models import User, Species, Classification
+from models.models import User, Species, Classification, SpeciesClassification
 from config import db
 
 
@@ -45,7 +45,7 @@ if __name__ == '__main__':
     db.session.add_all(users)
     db.session.commit()
 
-#SPECIES DATA
+#SPECIES 
     # species = Species(type='dog')
     # db.session.add(species)
     # db.session.commit()
@@ -55,5 +55,9 @@ if __name__ == '__main__':
     # db.session.add(classifications)
     # db.session.commit()
 
+#SPECIES-CLASSIFICATION
+    # species_classification = SpeciesClassification(classification_id=1, species_id=1)
+    # db.session.add(species_classification)
+    # db.session.commit()
 
 print('Complete.')

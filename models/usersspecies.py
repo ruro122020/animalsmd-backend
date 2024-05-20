@@ -11,3 +11,4 @@ class UsersSpecies(db.Model):
   user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
   #relationships
+  
