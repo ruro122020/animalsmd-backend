@@ -6,3 +6,5 @@ class Symptom(db.Model):
   id = db.Column(db.Integer, primary_key=True)
   name = db.Column(db.String, nullable=False)
   
+  #relationships
+  symptom_classification = db.relationship('SymptomClassification', back_populates='symptom')
