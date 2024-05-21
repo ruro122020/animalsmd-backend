@@ -11,3 +11,5 @@ class SpeciesClassification(db.Model):
   #relationships
   classification = db.relationship('Classification', back_populates='species_classification')
   species = db.relationship('Species', back_populates='species_classification')
+
+
