@@ -49,18 +49,22 @@ if __name__ == '__main__':
     # species = Species(type='dog')
     # db.session.add(species)
     # db.session.commit()
-    species = Species(type='cat')
-    db.session.add(species)
-    db.session.commit()
+    # species = Species(type='cat')
+    # db.session.add(species)
+    # db.session.commit()
 
 #CLASSIFICATIONS
     # classifications = Classification(classification='mammal')
     # db.session.add(classifications)
     # db.session.commit()
 
+    # classifications = Classification(classification='reptile')
+    # db.session.add(classifications)
+    # db.session.commit()
+
 #SPECIES-CLASSIFICATION
-    species_classification = SpeciesClassification(classification_id=1, species_id=2)
-    db.session.add(species_classification)
-    db.session.commit()
+    # species_classification = SpeciesClassification(classification_id=1, species_id=2)
+    # db.session.add(species_classification)
+    # db.session.commit()
 
 print('Complete.')
