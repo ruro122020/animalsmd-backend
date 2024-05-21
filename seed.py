@@ -22,33 +22,36 @@ if __name__ == '__main__':
     User.query.delete()
 
 #USERS FAKE DATA
-    users = []
-    usernames = []
-    for i in range(5):
-      username = fake.first_name()
-      email = f'{fake.last_name()}@{fake.domain_name()}'
-      #this while is to check if a username already exist
-      while username in usernames:
-          username = fake.first_name()
-      usernames.append(username)
+    # users = []
+    # usernames = []
+    # for i in range(5):
+    #   username = fake.first_name()
+    #   email = f'{fake.last_name()}@{fake.domain_name()}'
+    #   #this while is to check if a username already exist
+    #   while username in usernames:
+    #       username = fake.first_name()
+    #   usernames.append(username)
       
-      user = User(
-          name=fake.name(),
-          username=username,
-          email=email
-          )
+    #   user = User(
+    #       name=fake.name(),
+    #       username=username,
+    #       email=email
+    #       )
       
-      user.password_hash = user.username + 'password'
+    #   user.password_hash = user.username + 'password'
 
-      users.append(user)
+    #   users.append(user)
     
-    db.session.add_all(users)
-    db.session.commit()
+    # db.session.add_all(users)
+    # db.session.commit()
 
 #SPECIES 
     # species = Species(type='dog')
     # db.session.add(species)
     # db.session.commit()
+    species = Species(type='cat')
+    db.session.add(species)
+    db.session.commit()
 
 #CLASSIFICATIONS
     # classifications = Classification(classification='mammal')
@@ -56,8 +59,8 @@ if __name__ == '__main__':
     # db.session.commit()
 
 #SPECIES-CLASSIFICATION
-    # species_classification = SpeciesClassification(classification_id=1, species_id=1)
-    # db.session.add(species_classification)
-    # db.session.commit()
+    species_classification = SpeciesClassification(classification_id=1, species_id=2)
+    db.session.add(species_classification)
+    db.session.commit()
 
 print('Complete.')

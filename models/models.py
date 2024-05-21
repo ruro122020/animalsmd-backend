@@ -4,3 +4,4 @@ from .speciesclassification import SpeciesClassification
 from .usersspecies import UsersSpecies
 from .species import Species
 from .classification import Classification
+from .symptom import Symptom

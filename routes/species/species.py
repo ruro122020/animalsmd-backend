@@ -9,9 +9,16 @@ from marshmallow_schemas.speciesclassification import species_classification_sch
 class SpeciesByType(Resource):
   def get(self, type):
     species = Species.query.filter(Species.type == type).first()
-    for s in species.species_classification:
-      print(s.species_id)
-      #somequery 
+    species_classification = SpeciesClassification.query.filter(SpeciesClassification.species_id == species.id).first()
+    species_classification_schema.dump(species_classification)
+    #output: 
+    #{
+    # 'id': 2, 
+    # 'classification': {'id': 1, 'classification': 'mammal'}, 
+    # 'species': {'id': 2, 'type': 'cat'}
+    #}
+
+    #stopping here to build more tables to query more data for this route. 
     return species_schema.dump(species)
 
 api.add_resource(SpeciesByType, '/species/<type>')
