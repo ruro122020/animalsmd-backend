@@ -4,8 +4,8 @@ from config import app, db, api
 from models.models import User
 from sqlalchemy.exc import IntegrityError
 from marshmallow_schemas.users import user_schema
-class Signup(Resource):
 
+class Signup(Resource):
   def post(self):
     json = request.get_json()
     user = User(
