@@ -10,3 +10,4 @@ class SymptomClassificationSchema(ma.Schema):
 
 
 symptom_classification_schema = SymptomClassificationSchema()
+symptom_classification_schema_many = SymptomClassificationSchema(many=True)

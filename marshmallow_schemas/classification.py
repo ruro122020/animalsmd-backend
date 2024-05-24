@@ -6,10 +6,10 @@ class ClassificationSchema(ma.Schema):
   class Meta:
     model = Classification
     load_instance = True
-    # fields = ('id','classification')
   
   id = ma.Integer()
   classification = ma.String()
 
 
 classification_schema = ClassificationSchema()
+classifications_schema_many = ClassificationSchema(many=True)

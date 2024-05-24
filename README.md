@@ -34,3 +34,19 @@ NOTE: MAKE SURE YOU ARE IN PIPENV SHELL when you run python app.py. Being in the
 pipenv shell
 python app.py
 ```
+
+To successfully seed the data when importing all the modules, running the regular 
+```
+python seed/species.py
+``` 
+
+command will throw a "No module named config" error. To avoid this run the seed files in the seed folder using the following command: 
+
+```
+python -m seed.species # to seed species data
+or 
+python -m seed.classifications # to seed classification data 
+
+#etc
+```
+

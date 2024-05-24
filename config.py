@@ -25,8 +25,8 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://{user}:{password}@localhost:5432/{dbname}'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.json.compact = False
-
-app.config.update(SESSION_COOKIE_SAMESITE="None", SESSION_COOKIE_SECURE=True)
+#line below is not in use. Can be deleted, if needed
+# app.config.update(SESSION_COOKIE_SAMESITE="None", SESSION_COOKIE_SECURE=True)
 
 #session key configuration
 app.secret_key= os.getenv('SECRET_KEY')
@@ -51,5 +51,5 @@ api = Api(app)
 
 # Instantiate CORS
 CORS(app)
-#just in case cookies are being set again. Try add this line to the line above. 
+#just in case cookies are not being set again. Try add this line to the line above. 
 #, supports_credentials=True

@@ -13,13 +13,14 @@ from config import db
 
 
 if __name__ == '__main__':
-  fake = Faker()
+  pass
+  # fake = Faker()
 
-  with app.app_context():
-    print("Starting seed...")
-    # Seed code goes here!
-    print('Deleting all records...')
-    User.query.delete()
+  # with app.app_context():
+  #   print("Starting seed...")
+  #   # Seed code goes here!
+  #   print('Deleting all records...')
+  #   User.query.delete()
 
 #USERS FAKE DATA
     # users = []
@@ -46,12 +47,7 @@ if __name__ == '__main__':
     # db.session.commit()
 
 #SPECIES 
-    # species = Species(type='dog')
-    # db.session.add(species)
-    # db.session.commit()
-    # species = Species(type='cat')
-    # db.session.add(species)
-    # db.session.commit()
+
 
 #CLASSIFICATIONS
     # classifications = Classification(classification='mammal')

@@ -11,14 +11,11 @@ class SpeciesByType(Resource):
     species = Species.query.filter(Species.type == type).first()
     species_classification = SpeciesClassification.query.filter(SpeciesClassification.species_id == species.id).first()
     species_classification_schema.dump(species_classification)
-    #output: 
-    #{
-    # 'id': 2, 
-    # 'classification': {'id': 1, 'classification': 'mammal'}, 
-    # 'species': {'id': 2, 'type': 'cat'}
-    #}
+
+
 
     #stopping here to build more tables to query more data for this route. 
-    return species_schema.dump(species)
+    return species_classification_schema.dump(species_classification)
+
 
 api.add_resource(SpeciesByType, '/species/<type>')

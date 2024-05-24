@@ -16,3 +16,4 @@ class SpeciesClassificationSchema(ma.Schema):
 
 
 species_classification_schema = SpeciesClassificationSchema()
+species_classification_schema_many = SpeciesClassificationSchema(many=True)

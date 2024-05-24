@@ -13,3 +13,4 @@ class SpeciesSchema(ma.Schema):
 
 
 species_schema = SpeciesSchema()
+species_schema_many = SpeciesSchema(many=True)
