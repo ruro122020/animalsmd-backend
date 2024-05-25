@@ -7,10 +7,10 @@ class SymptomSchema(ma.Schema):
     model = Symptom
     load_instance = True
 
-  symptom_classification = fields.Nested('SymptomClassificationSchema')
   id = ma.Integer()
   name = ma.String()
   symptom = ma.String()
+  symptom_classification = fields.Nested('SymptomClassificationSchema')
 
-symptom__schema = SymptomSchema()
-symptom__schema_many = SymptomSchema(many=True)
+symptom_schema = SymptomSchema()
+symptom_schema_many = SymptomSchema(many=True)

@@ -9,13 +9,17 @@ from faker import Faker
 # Local imports
 from app import app
 from models.models import User, Species, Classification, SpeciesClassification
+from marshmallow_schemas.speciesclassification import species_classification_schema
 from config import db
 
 
 if __name__ == '__main__':
   pass
+  with app.app_context():
+    classification = Classification.query.filter_by(id=3).first()
+    classification.update({"classification": "aves"})
+    pass
   # fake = Faker()
-
   # with app.app_context():
   #   print("Starting seed...")
   #   # Seed code goes here!

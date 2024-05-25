@@ -1,14 +1,11 @@
 from config import db, app
 from models.models import Classification
-
-
-classifications = ['mammal', 'reptile', 'aves']
-
+from .classifications_data import classifications_data
 
 with app.app_context():
   created_classification = list()
 
-  for element in classifications:
+  for element in classifications_data:
     classification = Classification(classification=element)
     created_classification.append(classification)
   
