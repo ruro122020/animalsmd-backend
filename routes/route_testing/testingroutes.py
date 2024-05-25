@@ -5,15 +5,14 @@ from models.models import Species, Classification, Symptom, User, SpeciesClassif
 from sqlalchemy.exc import IntegrityError
 from marshmallow_schemas.species import species_schema
 from marshmallow_schemas.classification import classification_schema, classifications_schema_many
-from marshmallow_schemas.symptom import symptom_classification_schema
-from marshmallow_schemas.symptom import symptom_classification_schema_many
+from marshmallow_schemas.symptom import symptom__schema, symptom__schema_many
 from marshmallow_schemas.symptomsclassification import symptom_classification_schema_many, symptom_classification_schema
 
 class TestingRoute(Resource):
   def get(self):
-    symptoms_classification = SymptomClassification.query.all()
-    return symptom_classification_schema_many.dump(symptoms_classification)
-    pass
+    symptoms = Symptom.query.first()
+    return symptom__schema.dump(symptoms)
+    
 
 
 api.add_resource(TestingRoute,'/test')

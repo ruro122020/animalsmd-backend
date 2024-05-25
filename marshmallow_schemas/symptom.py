@@ -2,12 +2,15 @@ from config import ma
 from models.models import Symptom
 from flask_marshmallow.fields import fields
 
-class SymptomClassificationSchema(ma.Schema):
+class SymptomSchema(ma.Schema):
   class Meta:
     model = Symptom
     load_instance = True
-    fields = ('id', 'name', 'symptom_classification')
 
+  symptom_classification = fields.Nested('SymptomClassificationSchema')
+  id = ma.Integer()
+  name = ma.String()
+  symptom = ma.String()
 
-symptom_classification_schema = SymptomClassificationSchema()
-symptom_classification_schema_many = SymptomClassificationSchema(many=True)
+symptom__schema = SymptomSchema()
+symptom__schema_many = SymptomSchema(many=True)
