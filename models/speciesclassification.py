@@ -16,15 +16,17 @@ class SpeciesClassification(db.Model):
 
 
   @validates('classification_id')
-  def validate_classification(self, key, classification):
-    if classification is None:
+  def validate_classification(self, key, classification_id):
+    if classification_id is None:
       raise ValueError('classification must not be None')
 
   @validates('species_id')
-  def validate_species(self, key, species):
-    if species is None:
+  def validate_species(self, key, species_id):
+    if species_id is None:
       raise ValueError('species_id must not be None')
-
+#hybrid_property is being used for the getter and setter 
+#because classification and species attributes are NOT columns
+#in the database and @validates, validates columns not instances
   @hybrid_property
   def classification_obj(self):
     return self._classification
