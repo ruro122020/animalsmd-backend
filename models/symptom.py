@@ -15,9 +15,20 @@ class Symptom(db.Model):
   @validates('name')
   def validates_name (self, key, name):
     if name is None or type(name) == str:
-      raise ValueError("name must not be None. Must be of a string")
+      raise ValueError("name must not be None and must be of a string")
+    return self._name
+
+  @hybrid_property
+  def symptom_classification_obj(self):
+    return self._symptom_classification_obj
+  
+  @symptom_classification_obj.setter
+  def symptom_classification_obj(self, value):
+    from models.models import SymptomClassification
+    if not isinstance(value, SymptomClassification):
+      raise ValueError("value must be an instance of SymptomClassification model")
     else:
-      self._name = name
+      self._symptom_classification = value
 
   @classmethod
   def create(cls, type_name):
@@ -37,5 +48,5 @@ class Symptom(db.Model):
     db.session.commit()
 
   def delete_db(self):
-    db.session.delete(self.id)
+    db.session.delete(self)
     db.session.commit()

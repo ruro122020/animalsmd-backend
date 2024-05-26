@@ -53,5 +53,5 @@ class Species(db.Model):
     db.session.commit()
 
   def delete_db(self):
-    db.session.delete(self.id)
+    db.session.delete(self)
     db.session.commit()
