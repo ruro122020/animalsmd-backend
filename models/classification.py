@@ -25,9 +25,9 @@ class Classification(db.Model):
 
   @hybrid_property
   def species_classification_obj(self):
-    return self._classification 
+    return self._species_classification 
   
-  @species_classification.setter
+  @species_classification_obj.setter
   def species_classification_obj(self, value):
     from models.models import SpeciesClassification
     if not isinstance(value, SpeciesClassification):
