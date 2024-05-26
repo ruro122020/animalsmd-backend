@@ -16,7 +16,7 @@ class Symptom(db.Model):
   def validates_name (self, key, name):
     if name is None or type(name) == str:
       raise ValueError("name must not be None and must be of a string")
-    return self._name
+    return name
 
   @hybrid_property
   def symptom_classification_obj(self):
