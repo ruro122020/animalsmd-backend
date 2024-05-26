@@ -9,11 +9,9 @@ class SymptomClassification(db.Model):
   classification_id = db.Column(db.Integer, db.ForeignKey('classifications.id'))
   symptoms_id = db.Column(db.Integer, db.ForeignKey('symptoms.id'))
 
+  #relationships
   classification = db.relationship('Classification', back_populates='symptom_classification')
   symptom = db.relationship('Symptom', back_populates='symptom_classification')
-
-  #relationships
-
   
   @validates("classification_id")
   def validates_classification(self,key, classification_id):
@@ -62,10 +60,8 @@ class SymptomClassification(db.Model):
     db.session.commit()
 
   def update_db(self, new_values):
-    for new_value in new_values:
-      setattr(self, new_value, new_values.get(new_value))
-
-    db.session.add(self)
+    for key, value in new_values.items():
+      setattr(self, key, value)
     db.session.commit()
 
   def delete_db(self):
