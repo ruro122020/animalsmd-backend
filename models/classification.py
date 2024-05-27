@@ -20,7 +20,6 @@ class Classification(db.Model):
   #in the database and @validates, validates columns not instances
   @validates('classification')
   def validates_classification(self, key, classification):
-
     if classification is None or not type(classification) == str:
       raise ValueError('classification must not be None. Must be of type string.')
     return classification

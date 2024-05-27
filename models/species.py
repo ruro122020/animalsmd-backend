@@ -18,10 +18,10 @@ class Species(db.Model):
   #in the database and @validates, validates columns not instances
   @validates('type_name')
   def validates_type_name(self, key, type_name):
-    if type_name is None or type(type_name) == str:
+    if type_name is None or not type(type_name) == str:
       raise ValueError("type_name must not be None. Must be a string")
     else:
-      self._type_name = type_name
+      return type_name
 
   @hybrid_property
   def species_classification_obj(self):
@@ -36,12 +36,12 @@ class Species(db.Model):
       self._species_classification = value
 
   @classmethod
-  def create(cls, type_name):
-    type_name = cls(type_name = type_name)
-    type_name.save()
-    return type_name
+  def create_row(cls, type_name):
+    type_name_obj = cls(type_name=type_name)
+    type_name_obj.save_db()
+    return type_name_obj
   
-  def save(self):
+  def save_db(self):
     db.session.add(self)
     db.session.commit()
 

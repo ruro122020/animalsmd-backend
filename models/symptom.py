@@ -14,7 +14,7 @@ class Symptom(db.Model):
 
   @validates('name')
   def validates_name (self, key, name):
-    if name is None or type(name) == str:
+    if name is None or not type(name) == str:
       raise ValueError("name must not be None and must be of a string")
     return name
 
@@ -31,12 +31,12 @@ class Symptom(db.Model):
       self._symptom_classification = value
 
   @classmethod
-  def create(cls, type_name):
-    type_name = cls(type_name = type_name)
-    type_name.save()
-    return type_name
+  def create_row(cls, name):
+    name = cls(name = name)
+    name.save_db()
+    return name
   
-  def save(self):
+  def save_db(self):
     db.session.add(self)
     db.session.commit()
 
