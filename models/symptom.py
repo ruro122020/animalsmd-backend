@@ -9,7 +9,7 @@ class Symptom(db.Model):
   name = db.Column(db.String, nullable=False)
   
   #relationships
-  symptom_classification = db.relationship('SymptomClassification', back_populates='symptom')
+  symptom_classifications = db.relationship('SymptomClassification', back_populates='symptom')
 
 
   @validates('name')

@@ -13,7 +13,7 @@ class Classification(db.Model):
   #relationship between species and classification. This line points to SpeciesClassification association table
   species_classification = db.relationship('SpeciesClassification', back_populates='classification')
   #relationship between symptoms and classification. This line points to SymptomClassification association table
-  symptom_classification = db.relationship('SymptomClassification', back_populates='classification')
+  symptom_classifications = db.relationship('SymptomClassification', back_populates='classification')
 
   #hybrid_property is being used for the getter and setter 
   #because classification and species attributes are NOT columns

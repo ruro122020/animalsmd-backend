@@ -10,8 +10,8 @@ class SymptomClassification(db.Model):
   symptoms_id = db.Column(db.Integer, db.ForeignKey('symptoms.id'))
 
   #relationships
-  classification = db.relationship('Classification', back_populates='symptom_classification')
-  symptom = db.relationship('Symptom', back_populates='symptom_classification')
+  classification = db.relationship('Classification', back_populates='symptom_classifications')
+  symptom = db.relationship('Symptom', back_populates='symptom_classifications')
   
   @validates("classification_id")
   def validates_classification(self,key, classification_id):
