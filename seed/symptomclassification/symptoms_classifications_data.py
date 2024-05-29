@@ -1,11 +1,11 @@
 symptoms_classifications_data = {
-    "skin lesions": ["reptile", "mammal", "aves"],
-    "loss of appetite": ["reptile", "mammal", "aves"],
-    "lethargy": ["reptile", "mammal", "aves"],
-    "sneezing": ["reptile", "mammal", "aves"],
+    "skin lesions": ["reptile", "mammal", "ave"],
+    "loss of appetite": ["reptile", "mammal", "ave"],
+    "lethargy": ["reptile", "mammal", "ave"],
+    "sneezing": ["reptile", "mammal", "ave"],
     "coughing": ["mammal"],
-    "runny nose": ["reptile", "mammal", "aves"],
-    "ruffled feathers": ["aves"],
-    "difficulty breathing": ["reptile", "mammal", "aves"],
-    "decreased egg production": ["aves"] 
+    "runny nose": ["reptile", "mammal", "ave"],
+    "ruffled feathers": ["ave"],
+    "difficulty breathing": ["reptile", "mammal", "ave"],
+    "decreased egg production": ["ave"] 
 }

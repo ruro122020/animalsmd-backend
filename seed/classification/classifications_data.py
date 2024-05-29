@@ -1,1 +1,1 @@
-classifications_data = ['mammal', 'reptile', 'aves']
+classifications_data = ['mammal', 'reptile', 'ave']

@@ -1,8 +1,8 @@
 species_classification_data = {
   "dog":"mammal",
   "cat":"mammal",
-  "cockatiel":"aves",
-  "parrot": "aves",
+  "cockatiel":"ave",
+  "parrot": "ave",
   "turtle":"reptile",
   "bearded dragon":"reptile"
 }

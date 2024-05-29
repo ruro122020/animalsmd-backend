@@ -57,7 +57,7 @@ class SpeciesClassification(db.Model):
   @classmethod
   def create(cls, species, classification):
     species_classification = cls(classification=classification, species=species)
-    species_classification.save()
+    species_classification.save_db()
     return species_classification
   
   def save_db(self):

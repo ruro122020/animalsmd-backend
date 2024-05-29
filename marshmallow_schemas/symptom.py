@@ -9,8 +9,6 @@ class SymptomSchema(ma.Schema):
 
   id = ma.Integer()
   name = ma.String()
-  symptom = ma.String()
-  symptom_classification = fields.Nested('SymptomClassificationSchema')
 
 symptom_schema = SymptomSchema()
 symptom_schema_many = SymptomSchema(many=True)
