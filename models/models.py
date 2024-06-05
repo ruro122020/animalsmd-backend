@@ -6,4 +6,4 @@ from .classification import Classification
 from .symptom import Symptom
 from .user import User
 from .pet import Pet
-from .petsymptoms import PetSymptom
+from .petsymptom import PetSymptom
