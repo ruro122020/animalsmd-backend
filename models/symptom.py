@@ -8,10 +8,12 @@ class Symptom(db.Model):
   id = db.Column(db.Integer, primary_key=True)
   name = db.Column(db.String, nullable=False)
   
-  #relationships
+  #relationship with classifications table
   symptom_classifications = db.relationship('SymptomClassification', back_populates='symptom')
+  #relationship with pets table
+  pet_symptoms = db.relationship('PetSymptom', back_populates='symptom')
 
-
+  
   @validates('name')
   def validates_name (self, key, name):
     if name is None or not type(name) == str:

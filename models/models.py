@@ -5,5 +5,5 @@ from .species import Species
 from .classification import Classification
 from .symptom import Symptom
 from .user import User
-from .pets import Pet
+from .pet import Pet
 from .petsymptoms import PetSymptom
