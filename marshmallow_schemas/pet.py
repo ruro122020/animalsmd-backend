@@ -12,7 +12,8 @@ class PetSchema(ma.Schema):
   age=ma.Integer()
   weight = ma.Integer()
   user_id= ma.Integer()
-  pet_symptoms = fields.Nested("PetSymptomSchema")
+  symptoms = fields.List(fields.Nested("SymptomSchema"))
+# , attribute="symptoms"
 
 pet_schema = PetSchema()
 pet_schema_many = PetSchema(many=True)

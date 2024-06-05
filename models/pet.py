@@ -14,8 +14,12 @@ class Pet(db.Model):
 
   #relationships
   pet_symptoms = db.relationship('PetSymptom', back_populates='pet')
-  #validations
 
+  #validations
+  @hybrid_property
+  def symptoms(self):
+    return [pet_symptom.symptom for pet_symptom in self.pet_symptoms]
+  
   #methods to communicate with database
   @classmethod
   def create_row(cls, name, age, weight, species, user):

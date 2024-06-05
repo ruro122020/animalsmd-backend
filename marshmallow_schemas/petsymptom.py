@@ -10,8 +10,8 @@ class PetSymptomSchema(ma.Schema):
     
 
   id = ma.Integer()
-  # pet_id = ma.Integer()
-  # symptom_id = ma.Integer()
+  pet_id = ma.Integer()
+  symptom_id = ma.Integer()
   pet = fields.Nested('PetSchema')
   symptom = fields.Nested('SymptomSchema')
 
