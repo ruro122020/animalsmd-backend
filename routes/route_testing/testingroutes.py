@@ -8,6 +8,7 @@ from marshmallow_schemas.classification import classification_schema, classifica
 from marshmallow_schemas.symptom import symptom_schema_many, symptom_schema
 from marshmallow_schemas.symptomsclassification import symptom_classification_schema_many, symptom_classification_schema
 from marshmallow_schemas.pet import pet_schema
+
 class TestingRoute(Resource):
   def get(self):
     pet = Pet.query.filter_by(id=2).first()

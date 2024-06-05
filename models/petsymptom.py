@@ -13,14 +13,15 @@ class PetSymptom(db.Model):
   #relationships
   pet = db.relationship('Pet', back_populates='pet_symptoms')
   symptom = db.relationship('Symptom', back_populates='pet_symptoms')
+  
   #validations
-
+  
   #methods
   @classmethod
-  def create_row(cls, type_name):
-    type_name_obj = cls(type_name=type_name)
-    type_name_obj.save_db()
-    return type_name_obj
+  def create_row(cls, pet, symptom):
+    pet_symptom = cls(pet=pet, symptom=symptom)
+    pet_symptom.save_db()
+    return pet_symptom
   
   def save_db(self):
     db.session.add(self)

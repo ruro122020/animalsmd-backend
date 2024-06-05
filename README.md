@@ -50,3 +50,14 @@ python -m seed.classifications # to seed classification data
 #etc
 ```
 
+# Marshmallow
+
+Note: When creating a new schema for a model and a nested model is used, to avoid import issues pass the name of the schema as a string and add it to the __init__.py file in the marshmallow_schema folder
+
+
+# Building a model
+
+1. Build the model 
+2. Seed the database
+3. Create Marshmallow schema for model
+4. Test marshmallow serialized data in a route
