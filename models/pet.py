@@ -16,6 +16,8 @@ class Pet(db.Model):
   pet_symptoms = db.relationship('PetSymptom', back_populates='pet')
 
   #validations
+
+  #method to get list of pet symptoms
   @hybrid_property
   def symptoms(self):
     return [pet_symptom.symptom for pet_symptom in self.pet_symptoms]

@@ -61,3 +61,6 @@ Note: When creating a new schema for a model and a nested model is used, to avoi
 2. Seed the database
 3. Create Marshmallow schema for model
 4. Test marshmallow serialized data in a route
+
+# Building Routes
+When building protected routes, makes sure to add an endpoint (api.add_resource(Resource, '/resource', endpoint='resource'))and add that name as a string in the protected_routes array that is in the authenticate.py file in utils folder

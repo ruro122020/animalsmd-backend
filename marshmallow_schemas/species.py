@@ -6,8 +6,8 @@ class SpeciesSchema(ma.Schema):
   class Meta:
     model = Species
     load_instance = True
-    fields = ('id','type_name')
-
+    fields = ('id','type_name', 'species_classification')
+  
   species_classification = fields.Nested("SpeciesClassification")
 
 
