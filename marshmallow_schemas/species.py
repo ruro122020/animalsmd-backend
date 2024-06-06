@@ -8,7 +8,7 @@ class SpeciesSchema(ma.Schema):
     load_instance = True
     fields = ('id','type_name', 'species_classification')
   
-  species_classification = fields.Nested("SpeciesClassification")
+  species_classification = fields.Nested("SpeciesClassificationSchema")
 
 
 
