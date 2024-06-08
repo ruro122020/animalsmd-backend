@@ -10,9 +10,12 @@ class Symptom(db.Model):
   
   #relationship with classifications table
   symptom_classifications = db.relationship('SymptomClassification', back_populates='symptom')
+  
   #relationship with pets table
   pet_symptoms = db.relationship('PetSymptom', back_populates='symptom')
-
+  
+  #relationship with illnesses table
+  illness_symptom = db.relationship('IllnessSymptom', back_populates='symptom')
   
   @validates('name')
   def validates_name (self, key, name):

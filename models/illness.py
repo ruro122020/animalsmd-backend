@@ -7,7 +7,13 @@ class Illness(db.Model):
 
   id = db.Column(db.Integer, primary_key=True)
   name = db.Column(db.String, nullable=False)
+  
+  #relationship with illnesses table
+  illness_symptom = db.relationship('IllnessSymptom', back_populates='illness', cascade="all, delete-orphan")
 
+  @hybrid_property
+  def symptoms(self):
+    return []
   @classmethod
   def create_row(cls, name):
     illness = cls(name = name)

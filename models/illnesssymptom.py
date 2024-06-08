@@ -10,6 +10,10 @@ class IllnessSymptom(db.Model):
   illness_id = db.Column(db.Integer, db.ForeignKey('illnesses.id'))
   symptom_id = db.Column(db.Integer, db.ForeignKey('symptoms.id'))
 
+  #relationships
+  illness = db.relationship('Illness', back_populates='illness_symptom')
+  symptom = db.relationship('Symptom', back_populates='illness_symptom')
+
   @classmethod
   def create_row(cls, illness, symptom):
     illness_symptom = cls(illness=illness, symptom=symptom)
