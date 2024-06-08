@@ -10,9 +10,9 @@ class Illness(db.Model):
 
   @classmethod
   def create_row(cls, name):
-    name = cls(name = name)
-    name.save_db()
-    return name
+    illness = cls(name = name)
+    illness.save_db()
+    return illness
   
   def save_db(self):
     db.session.add(self)

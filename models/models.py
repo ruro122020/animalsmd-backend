@@ -7,4 +7,5 @@ from .symptom import Symptom
 from .user import User
 from .pet import Pet
 from .petsymptom import PetSymptom
-from .illnesses import Illness
+from .illness import Illness
+from .illnesssymptom import IllnessSymptom
