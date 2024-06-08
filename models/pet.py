@@ -20,7 +20,7 @@ class Pet(db.Model):
   #method to get list of pet symptoms
   @hybrid_property
   def symptoms(self):
-    return [pet_symptom.symptom for pet_symptom in self.pet_symptoms]
+    return [pet.symptom for pet in self.pet_symptoms]
   
   #methods to communicate with database
   @classmethod

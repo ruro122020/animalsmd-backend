@@ -13,7 +13,8 @@ class Illness(db.Model):
 
   @hybrid_property
   def symptoms(self):
-    return []
+    return [illness.symptom for illness in self.illness_symptom]
+  
   @classmethod
   def create_row(cls, name):
     illness = cls(name = name)
