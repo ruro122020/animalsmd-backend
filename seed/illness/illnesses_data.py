@@ -1,0 +1,1 @@
+illnesses_data = ['scale rot', 'respiratory infection', 'avian flu']
