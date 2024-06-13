@@ -1,4 +1,4 @@
-from flask import request, session
+from flask import request, session, jsonify
 from flask_restful import Resource
 from config import app, db, api
 from models.models import Pet, User, Species, PetSymptom, Symptom
@@ -20,13 +20,16 @@ class Pets(Resource):
       if user and species:
         pet = Pet.create_row(name = user_pet.get('name'), age = user_pet.get('age'), weight=user_pet.get('weight'), user=user.id, species=species.id)#id's had to be passed cause Pet model has no validations yet. 
         #add pet symptoms to petssymptoms table
-        for symptom_name in user_pet.get('symptoms'):
-          symptom = Symptom.query.filter_by(name = symptom_name).first()
-          if symptom:
-            pet_symptom = PetSymptom.create_row(pet=pet, symptom=symptom)
-            print('pet_symptom', pet_symptom)
-          else:
-            return {"error": f"pet '{symptom_name}' symptom  does not exist"}, 400
+        if user_pet.get('symptoms'):
+          for symptom_name in user_pet.get('symptoms'):
+            symptom = Symptom.query.filter_by(name = symptom_name).first()
+            if symptom:
+              pet_symptom = PetSymptom.create_row(pet=pet, symptom=symptom)
+              print('pet_symptom', pet_symptom)
+            else:
+              return {"error": f"pet '{symptom_name}' symptom  does not exist"}, 400
+        else:
+          return {"error":"symptoms are missing"}, 400
       else:
         return {"error":"user or species of pet does not exist"}, 400
     else:
