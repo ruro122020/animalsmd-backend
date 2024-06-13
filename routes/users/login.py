@@ -14,7 +14,7 @@ class Login(Resource):
         session['user_id'] = user.id
         return user_schema.dump(user), 200
       else:
-        return {'error':'Invalid Credentials', 'code': 401}, 401
+        return {'error':'Invalid Credentials'}, 401
     else:
       return {'error': 'User does NOT exist'}, 400
 
