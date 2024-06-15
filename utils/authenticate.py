@@ -1,7 +1,7 @@
 from flask import session, jsonify, request
 #this file authenticates users before accessing protected routes.
 #add route's endpoint to this array
-protected_routes = ['pets']
+protected_routes = []
 
 class authenticate():
   def check_authentication():
