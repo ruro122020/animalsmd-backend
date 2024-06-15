@@ -4,6 +4,7 @@ from config import api
 
 class Results(Resource):
   def get(self):
+    
     pass
 
 

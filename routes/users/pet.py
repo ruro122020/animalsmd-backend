@@ -3,7 +3,7 @@ from flask_restful import Resource
 from config import app, db, api
 from models.models import Pet, User, Species, PetSymptom, Symptom
 from utils.authenticate import authenticate
-from marshmallow_schemas.pet import pet_schema_many
+from marshmallow_schemas.pet import pet_schema_many, pet_schema
 
 def get_user(user_id):
   """Fetch the user by ID."""
@@ -57,6 +57,6 @@ class Pets(Resource):
 
     if error_message:
       return error_message
-    return {}, 200
+    return pet_schema.dump(pet), 200
 
 api.add_resource(Pets, '/user/pets', endpoint='pets')
