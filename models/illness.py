@@ -7,7 +7,8 @@ class Illness(db.Model):
 
   id = db.Column(db.Integer, primary_key=True)
   name = db.Column(db.String, nullable=False)
-  
+  #to avoid 'not nullable' errors during migration, nullable=False is not being set for now
+  description = db.Column(db.String, nullable=False)
   #relationship with illnesses table
   illness_symptom = db.relationship('IllnessSymptom', back_populates='illness', cascade="all, delete-orphan")
   
@@ -19,8 +20,8 @@ class Illness(db.Model):
     return [illness.symptom for illness in self.illness_symptom]
   
   @classmethod
-  def create_row(cls, name):
-    illness = cls(name = name)
+  def create_row(cls, name, description):
+    illness = cls(name = name, description = description )
     illness.save_db()
     return illness
   

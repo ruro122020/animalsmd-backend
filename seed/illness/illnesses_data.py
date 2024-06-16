@@ -1,1 +1,6 @@
-illnesses_data = ['scale rot', 'respiratory infection', 'avian flu']
+# illnesses_data = ['scale rot', 'respiratory infection', 'avian flu']
+illnesses_data = {
+  "scale rot": "Scale rot is a bacterial infection that affects reptiles, particularly snakes and lizards. It is typically caused by unsanitary living conditions and can result in lesions, ulcers, and the deterioration of the scales. Proper hygiene, habitat maintenance, and prompt veterinary care are crucial for prevention and treatment.",
+  "respiratory infection": "Respiratory infections are illnesses that affect the respiratory system, including the lungs and airways. These infections can be caused by bacteria, viruses, or fungi, and symptoms often include coughing, sneezing, difficulty breathing, and nasal discharge. Treatment depends on the underlying cause and may include antibiotics, antivirals, or antifungal medications, along with supportive care.",
+  "avian flu": "Avian flu, also known as avian influenza, is a viral infection that primarily affects birds but can also infect humans and other animals. The virus is highly contagious among birds and can cause severe respiratory illness and high mortality rates in poultry. Human infections, though rare, can occur and may lead to severe respiratory symptoms. Control measures include culling infected birds, vaccination programs, and strict biosecurity practices."
+}

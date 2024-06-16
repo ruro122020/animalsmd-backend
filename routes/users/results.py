@@ -5,9 +5,6 @@ from models.models import Symptom, IllnessSymptom, Illness, IllnessClassificatio
 from sqlalchemy import func
 from marshmallow_schemas.illness import illness_schema 
 
-#implement considering species type
-
-
 class Results(Resource):
   def post(self):
     #get symptoms from the request body
@@ -52,9 +49,7 @@ class Results(Resource):
     """
 
     #  - query the speciesclassifications table to find the classification id of the species 
-    pet_type = pet_info.get('type')
-    species = Species.query.filter_by(type_name = pet_type).first()
-    species_classification = SpeciesClassification.query.filter_by(species_id = species.id).first()
+    species_classification = SpeciesClassification.query.filter_by(species_id = pet_info.get('species_id')).first()
     pet_classification = species_classification.classification
 
     #  - use classification's id to query the illnessclassifications table, return all illness that matched the classification_id

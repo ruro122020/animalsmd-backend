@@ -6,7 +6,7 @@ class PetSchema(ma.Schema):
   class Meta:
     model = Pet
     load_instance = True
-    fields = ('id', 'name', 'age', 'weight', 'user_id', 'symptoms')
+    fields = ('id', 'name', 'age', 'weight', 'user_id', 'species_id', 'symptoms')
 
   symptoms = fields.List(fields.Nested("SymptomSchema"))
 

@@ -6,7 +6,7 @@ class IllnessSchema(ma.Schema):
   class Meta:
     model = Illness
     load_instance = True
-    fields = ('id', 'name', 'symptoms')
+    fields = ('id', 'name', 'symptoms', 'description')
 
   symptoms = fields.List(fields.Nested('SymptomSchema'))
 
