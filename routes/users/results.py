@@ -1,25 +1,18 @@
 from flask import request, session
 from flask_restful import Resource
 from config import api, db
-from models.models import Symptom, IllnessSymptom, Illness
+from models.models import Symptom, IllnessSymptom, Illness, IllnessClassification, SpeciesClassification, Species
 from sqlalchemy import func
 from marshmallow_schemas.illness import illness_schema 
 
 #implement considering species type
 
-"""
- Now that I have a list of illness:
-  - create illnessclassifications 
-  - seed data in illnessclassifications
-  - query the speciesclassifications table to find the classification of the species 
-  - use classification's id to query the illnessclassifications table, return all illness that matched the classification_id
-  - compare the returned list from illnessclassification to the illness_list
-"""
+
 class Results(Resource):
   def post(self):
     #get symptoms from the request body
-    symptoms = request.get_json().get("symptoms")
-    print('petInfo', request.get_json())
+    pet_info = request.get_json()
+    symptoms = pet_info.get("symptoms")
     #if symptoms don't exist return an error message
     if not symptoms:
       return {"error":"Symptoms are missing"}, 400
@@ -45,12 +38,34 @@ class Results(Resource):
         db.desc('match_count')
     ).all()
 
-    print('illnesses', illnesses)
-    illness_list = []
+    illness_ids_list = []
     #even though count is not being used, it is setup this way so that illness won't be a tuple that includes
     #the count
     for illness, count in illnesses:
-      illness_list.append(illness_schema.dump(illness))
+      illness_ids_list.append(illness.id)
+
+    """
+     Now that I have a list of illness id's:
+    - query the speciesclassifications table to find the classification id of the species 
+    - use classification's id to query the illnessclassifications table, return all illness that matched the classification_id
+    - compare the returned list from illnessclassification to the illness_list
+    """
+
+    #  - query the speciesclassifications table to find the classification id of the species 
+    pet_type = pet_info.get('type')
+    species = Species.query.filter_by(type_name = pet_type).first()
+    species_classification = SpeciesClassification.query.filter_by(species_id = species.id).first()
+    pet_classification = species_classification.classification
+
+    #  - use classification's id to query the illnessclassifications table, return all illness that matched the classification_id
+    illness_classifications = IllnessClassification.query.filter_by(classification_id = pet_classification.id).all()
+
+    #  - compare the returned list from illnessclassification to the illness_list
+    illness_list = []
+    for illness_classification in illness_classifications:
+      if illness_classification.illness_id in illness_ids_list:
+        illness = Illness.query.filter_by(id=illness_classification.illness_id).first()
+        illness_list.append(illness_schema.dump(illness))
 
     return illness_list, 200
 
