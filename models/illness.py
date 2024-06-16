@@ -10,7 +10,10 @@ class Illness(db.Model):
   
   #relationship with illnesses table
   illness_symptom = db.relationship('IllnessSymptom', back_populates='illness', cascade="all, delete-orphan")
-
+  
+  #relationship with illnessclassification
+  illness_classification = db.relationship('IllnessClassification', back_populates='illness', cascade='all, delete-orphan')
+  
   @hybrid_property
   def symptoms(self):
     return [illness.symptom for illness in self.illness_symptom]

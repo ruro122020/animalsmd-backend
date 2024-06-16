@@ -10,11 +10,16 @@ class Classification(db.Model):
   classification = db.Column(db.String, nullable=False)
 
   #relationships
+  
   #relationship between species and classification. This line points to SpeciesClassification association table
   species_classification = db.relationship('SpeciesClassification', back_populates='classification')
+  
   #relationship between symptoms and classification. This line points to SymptomClassification association table
   symptom_classifications = db.relationship('SymptomClassification', back_populates='classification')
-
+  
+  #relationship between illness and classification. 
+  illness_classification = db.relationship('IllnessClassification', back_populates='classification', cascade='all, delete-orphan')
+  
   #hybrid_property is being used for the getter and setter 
   #because classification and species attributes are NOT columns
   #in the database and @validates, validates columns not instances
