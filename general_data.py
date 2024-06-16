@@ -1,14 +1,14 @@
 data = {
-    'Reptile': {
-        'illness': 'Scale Rot',
-        'symptoms': ['Skin Lesions', 'Loss of Appetite', 'Lethargy']
+    'reptile': {
+        'illness': 'scale rot',
+        'symptoms': ['skin lesions', 'loss of appetite', 'lethargy']
     },
-    'Mammal': {
-        'illness': 'Respiratory Infection',
-        'symptoms': ['Sneezing', 'Coughing', 'Runny Nose']
+    'mammal': {
+        'illness': 'respiratory infection',
+        'symptoms': ['sneezing', 'coughing', 'runny nose']
     },
-    'Bird': {
-        'illness': 'Avian Flu',
-        'symptoms': ['Ruffled Feathers', 'Difficulty Breathing', 'Decreased Egg Production']
+    'ave': {
+        'illness': 'avian flu',
+        'symptoms': ['ruffled feathers', 'difficulty breathing', 'decreased egg production']
     }
 }
