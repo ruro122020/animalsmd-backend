@@ -51,8 +51,8 @@ class Pets(Resource):
 
     if not user_pet.get('symptoms'):
       return {"error":"symptoms are missing"}, 400
-    #user_pet is an object from the frontend
-    #pet is the object created in create_pet
+    #user_pet: is an object from the frontend
+    #pet: is the object created in create_pet
     error_message = add_pets_symptoms(user_pet, pet)
 
     if error_message:
