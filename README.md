@@ -68,6 +68,7 @@ When building protected routes, makes sure to add an endpoint (api.add_resource(
 
 ## POSTGRES
 To reset table primary key to 1:
+
 ```
 TRUNCATE TABLE table_name RESTART IDENTITY;
 ```
