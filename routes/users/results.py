@@ -67,4 +67,4 @@ class Results(Resource):
     
 
 
-api.add_resource(Results, '/results', endpoint='results')
+api.add_resource(Results, '/user/results', endpoint='results')

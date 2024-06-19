@@ -2,6 +2,8 @@ from flask import request, session, jsonify
 from flask_restful import Resource
 from config import app, db, api
 from models.models import Pet
+from marshmallow_schemas.pet import pet_schema
+
 
 class PetByID(Resource):
   def delete(self, id):
@@ -11,6 +13,15 @@ class PetByID(Resource):
       return {}, 200
 
     return {"error":'Pet does not exist'}
+  
+  def patch(self, id):
+    pet = Pet.query.filter_by(id=id).first()
+    pet_from_user = request.get_json()
+    if pet:
+      pet.update_db(pet_from_user)
+      return pet_schema.dump(pet), 200
+      
+    return {"error": "Pet does not exist"}, 400
             
 
 
