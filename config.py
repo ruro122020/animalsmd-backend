@@ -13,15 +13,22 @@ from flask_marshmallow import Marshmallow
 import os
 
 #enviroment variables
+  #local machine database
 user = os.getenv('USER')
 password = os.getenv('PASSWORD')
 dbname = os.getenv('DBNAME')
-
-# Local imports
+  #supabase database
+supauser = os.getenv('SUPAUSER')
+supapassword =os.getenv('SUPAPASSWORD')
+supadbname =os.getenv('SUPADBNAME')
+supaport = os.getenv('SUPAPORT')
 
 # Instantiate app, set attributes
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://{user}:{password}@localhost:5432/{dbname}'
+
+#Postgresql string
+#f'postgresql://{user}:{password}@localhost:5432/{dbname}'
+app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://{supauser}:{supapassword}@aws-0-us-east-1.pooler.supabase.com:{supaport}/{supadbname}'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.json.compact = False
 #line below is not in use. Can be deleted, if needed
