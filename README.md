@@ -65,6 +65,8 @@ Note: When creating a new schema for a model and a nested model is used, to avoi
 # Building Routes
 When building protected routes, makes sure to add an endpoint (api.add_resource(Resource, '/resource', endpoint='resource'))and add that name as a string in the protected_routes array that is in the authenticate.py file in utils folder
 
+### Creating Routes
+when creating a new route script/file, it needs to be added to the routes.py file to establish the connection. All routes are being access through the routes.py file.
 
 ## POSTGRES
 To reset table primary key to 1:
