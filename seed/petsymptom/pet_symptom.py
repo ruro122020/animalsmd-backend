@@ -1,6 +1,6 @@
 from config import db, app
 from models.models import Pet, PetSymptom, Symptom
-from .pet_symptoms_data import pet_symptoms_data
+from .pets_symptoms_data import pet_symptoms_data
 
 with app.app_context():
   for pet_symptom in pet_symptoms_data:

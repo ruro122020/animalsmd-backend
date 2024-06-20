@@ -1,6 +1,6 @@
 from config import db, app
 from models.models import IllnessClassification, Illness, Classification
-from .illness_classification_data import illness_classification_data
+from .illnesses_classifications_data import illness_classification_data
 
 with app.app_context():
   for classification_name in illness_classification_data:

@@ -1,6 +1,6 @@
-from config import db, app
+from config import app
 from models.models import Pet, Species, User
-from .pet_data import pet_data
+from .pets_data import pet_data
 
 
 

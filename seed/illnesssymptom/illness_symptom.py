@@ -1,6 +1,6 @@
 from config import db, app
 from models.models import IllnessSymptom, Illness, Symptom
-from .illness_symptom_data import illness_symptom_data
+from .illnesses_symptoms_data import illness_symptom_data
 
 with app.app_context():
   for illness in illness_symptom_data:
