@@ -10,11 +10,12 @@ from marshmallow_schemas.symptomsclassification import symptom_classification_sc
 from marshmallow_schemas.pet import pet_schema
 from marshmallow_schemas.illness import illness_schema, illness_schema_many
 from marshmallow_schemas.illnesssymptom import illness_symptom_schema_many
-
+from marshmallow_schemas.medication import medication_schema, medication_schema_many
+from models.models import Medication
 class TestingRoute(Resource):
   def get(self):
-    illness = Illness.query.all()
-    return illness_schema_many.dump(illness)
+    medication = Medication.query.first()
+    return medication_schema.dump(medication)
     
 
 
