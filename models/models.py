@@ -10,3 +10,4 @@ from .user import User
 from .pet import Pet
 from .petsymptom import PetSymptom
 from .illness import Illness
+from .medication import Medication

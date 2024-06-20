@@ -5,7 +5,7 @@ from flask import Flask
 from flask_bcrypt import Bcrypt 
 from flask_cors import CORS
 from flask_migrate import Migrate
-from flask_restful import Api
+from flask_restful import Api 
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import MetaData
 from flask_marshmallow import Marshmallow
@@ -13,10 +13,13 @@ from flask_marshmallow import Marshmallow
 import os
 
 #enviroment variables
-  #local machine database
-user = os.getenv('USER')
-password = os.getenv('PASSWORD')
-dbname = os.getenv('DBNAME')
+  #postgresql local machine string:
+  ##f'postgresql://{user}:{password}@localhost:5432/{dbname}'
+  #local machine database credentials
+# user = os.getenv('USER')
+# password = os.getenv('PASSWORD')
+# dbname = os.getenv('DBNAME')
+
   #supabase database
 supauser = os.getenv('SUPAUSER')
 supapassword =os.getenv('SUPAPASSWORD')
@@ -27,7 +30,6 @@ supaport = os.getenv('SUPAPORT')
 app = Flask(__name__)
 
 #Postgresql string
-#f'postgresql://{user}:{password}@localhost:5432/{dbname}'
 app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://{supauser}:{supapassword}@aws-0-us-east-1.pooler.supabase.com:{supaport}/{supadbname}'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.json.compact = False
@@ -57,5 +59,4 @@ api = Api(app)
 
 # Instantiate CORS
 CORS(app)
-#just in case cookies are not being set again. Try add this line to the line above. 
-#, supports_credentials=True
+

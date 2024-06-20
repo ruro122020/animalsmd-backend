@@ -4,9 +4,40 @@ from config import api, db
 from models.models import Symptom, IllnessSymptom, Illness, IllnessClassification, SpeciesClassification, Species
 from sqlalchemy import func
 from marshmallow_schemas.illness import illness_schema 
+#Results object should look something like the following:
+# {
+#   "Illnesses":[
+#     {
+#     "illness name":"description of illness"
+#     },
+#     {
+#     "illness name": "description of ilness"
+#     }
+#   ],
+#   "Remedies":['remedy one', 'remedy two'],
+#   "Medications":[{
+#     "medication name": "medication description",
+#     "medication name": "medication description",
+#   }],
+#   "Products":[{
+#     "medication name":"",
+#     "medication description":"",
+#     "medication price": "",
+#     "medication image":"",
+#     "medication prescription":""
+#   },
+#   {
+#     "medication name":"",
+#     "medication description":"",
+#     "medication price": "",
+#     "medication image":"",
+#     "medication prescription":""
+#   }]
+# }
 
 class Results(Resource):
-  def post(self):
+  def post(self, id):
+    #ID IS THE ID OF THE PET, YOU CAN USE THE PETS ID TO GET ITS SYMPTOMS AND THE PET'S INFO AS WELL
     #get symptoms from the request body
     pet_info = request.get_json()
     symptoms = pet_info.get("symptoms")
@@ -67,4 +98,4 @@ class Results(Resource):
     
 
 
-api.add_resource(Results, '/user/results', endpoint='results')
+api.add_resource(Results, '/user/pets/<int:id>/results', endpoint='results')
