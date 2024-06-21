@@ -32,3 +32,4 @@ class IllnessSymptom(db.Model):
   def delete_db(self):
     db.session.delete(self)
     db.session.commit()
+

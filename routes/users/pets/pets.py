@@ -43,9 +43,12 @@ class Pets(Resource):
     species_name = user_pet.get('type')
     user = get_user(user_id)
     species = get_species(species_name)
+    
+    if not user:
+      return {"error":"user of pet does not exist"}, 400
 
-    if not user or not species:
-      return {"error":"user or species of pet does not exist"}, 400
+    if not species:
+      return {"error":"species of pet does not exist"}, 400
 
     pet = create_pet(user_pet, user, species)
 

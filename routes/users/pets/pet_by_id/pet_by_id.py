@@ -22,8 +22,5 @@ class PetByID(Resource):
       return pet_schema.dump(pet), 200
       
     return {"error": "Pet does not exist"}, 400
-            
-
-
 
 api.add_resource(PetByID, '/user/pets/<int:id>')

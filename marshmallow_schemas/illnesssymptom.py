@@ -9,8 +9,8 @@ class IllnessSymptomSchema(ma.Schema):
 
   
   illness = fields.Nested("IllnessSchema")
-  symptom = fields.Nested('SymptomSchema')
-  id = ma.Integer()
+  # symptom = fields.Nested('SymptomSchema')
+  # id = ma.Integer()
 
 
 illness_symptom_schema = IllnessSymptomSchema()
