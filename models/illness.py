@@ -7,8 +7,9 @@ class Illness(db.Model):
 
   id = db.Column(db.Integer, primary_key=True)
   name = db.Column(db.String, nullable=False)
-  #to avoid 'not nullable' errors during migration, nullable=False is not being set for now
   description = db.Column(db.String, nullable=False)
+  remedies = db.Column(db.String)
+
   #relationship with illnesses table
   illness_symptom = db.relationship('IllnessSymptom', back_populates='illness', cascade="all, delete-orphan")
   

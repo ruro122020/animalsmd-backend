@@ -11,10 +11,10 @@ from app import app
 from config import db
 
 
-from seed import add_data_to_medications_table
+from seed import seed_medications_table
 
 if __name__ == '__main__':
-  add_data_to_medications_table()
+  seed_medications_table()
   pass
   # fake = Faker()
   # with app.app_context():

@@ -1,1 +1,1 @@
-from .medication.medication import add_data_to_medications_table
+from .medication.medication import seed_medications_table

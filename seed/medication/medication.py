@@ -2,7 +2,7 @@ from .medications_data import medications_data
 from config import app
 from models.models import Medication
 
-def add_data_to_medications_table():
+def seed_medications_table():
   with app.app_context():
     Medication.query.delete()
 
@@ -10,4 +10,4 @@ def add_data_to_medications_table():
       Medication.create_row(medication, description)
       
 
-add_data_to_medications_table()
+seed_medications_table()
