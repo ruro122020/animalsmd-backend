@@ -8,7 +8,7 @@ class Illness(db.Model):
   id = db.Column(db.Integer, primary_key=True)
   name = db.Column(db.String, nullable=False)
   description = db.Column(db.String, nullable=False)
-  remedies = db.Column(db.String, nullable=False)
+  remedy = db.Column(db.String)
 
   #relationship with illnesses table
   illness_symptom = db.relationship('IllnessSymptom', back_populates='illness', cascade="all, delete-orphan")
@@ -21,8 +21,8 @@ class Illness(db.Model):
     return [illness.symptom for illness in self.illness_symptom]
   
   @classmethod
-  def create_row(cls, name, description, remedies):
-    illness = cls(name=name, description=description, remedies=remedies )
+  def create_row(cls, name, description, remedy):
+    illness = cls(name=name, description=description, remedy=remedy )
     illness.save_db()
     return illness
   
