@@ -9,7 +9,7 @@ class Medication(db.Model):
 
   #relationships
   #relationship with illnessmedication
-  illness_medication = db.relationship('IllnessMedication', back_populates = 'illness_medication', cascade='all, delete-orphan')
+  illness_medication = db.relationship('IllnessMedication', back_populates = 'medication', cascade='all, delete-orphan')
   
   @classmethod
   def create_row(cls, name, description):

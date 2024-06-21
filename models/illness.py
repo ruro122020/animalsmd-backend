@@ -17,11 +17,15 @@ class Illness(db.Model):
   illness_classification = db.relationship('IllnessClassification', back_populates='illness', cascade='all, delete-orphan')
   
   #relationship with illnessmedication
-  illness_medication = db.relationship('IllnessMedication', back_populates = 'illness_medication', cascade='all, delete-orphan' )
-  
+  illness_medication = db.relationship('IllnessMedication', back_populates = 'illness', cascade='all, delete-orphan' )
+
   @hybrid_property
   def symptoms(self):
     return [illness.symptom for illness in self.illness_symptom]
+  
+  @hybrid_property
+  def medications(self):
+    return [illness.medication for illness in self.illness_medication]
   
   @classmethod
   def create_row(cls, name, description, remedy):

@@ -2,7 +2,7 @@ from sqlalchemy import ForeignKey
 from config import db
 
 class IllnessMedication(db.Model):
-  __tablename__ = 'illnessesMedications'
+  __tablename__ = 'illnessesmedications'
 
   id = db.Column(db.Integer, primary_key=True)
   illness_id = db.Column(db.Integer, ForeignKey('illnesses.id'))
