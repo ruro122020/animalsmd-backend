@@ -9,8 +9,8 @@ class IllnessMedication(db.Model):
   medication_id = db.Column(db.Integer, ForeignKey('medications.id'))
 
   #relationships
-  illness = db.relationship()
-  medication = db.relationship()
+  illness = db.relationship('Illness', back_populates='illness_medication')
+  medication = db.relationship('Medication', back_populates='illness_medication')
 
   @classmethod
   def create_row(cls, illness, medication):

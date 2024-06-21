@@ -7,8 +7,10 @@ class Medication(db.Model):
   name = db.Column(db.String, nullable=False)
   description = db.Column(db.String, nullable=False)
 
-
-
+  #relationships
+  #relationship with illnessmedication
+  illness_medication = db.relationship('IllnessMedication', back_populates = 'illness_medication', cascade='all, delete-orphan')
+  
   @classmethod
   def create_row(cls, name, description):
     pet = cls(name=name, description=description)
