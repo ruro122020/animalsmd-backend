@@ -1,1 +1,0 @@
-from .medication.medication import seed_medications_table

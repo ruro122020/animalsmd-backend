@@ -58,8 +58,7 @@ class PetResults(Resource):
 
     #this illness_list will be returned so it needs to be serialized 
     illness_list = create_illness_list(illnesses_based_on_pets_classification, illness_ids)
-    
-
+      
     #Now we want to get all the medications that are used for the illness(s)
 
 
@@ -67,8 +66,8 @@ class PetResults(Resource):
 
 
     #Now we want to get all the products that the user can purchase for their pet's illness
-
-    return pet_schema.dump(pet), 200
+    return [illness_schema.dump(illness) for illness in illness_list], 200
+    # return pet_schema.dump(pet), 200
 
     
 
