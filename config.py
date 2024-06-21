@@ -33,8 +33,6 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://{supauser}:{supapassword}@aws-0-us-east-1.pooler.supabase.com:{supaport}/{supadbname}'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.json.compact = False
-#line below is not in use. Can be deleted, if needed
-# app.config.update(SESSION_COOKIE_SAMESITE="None", SESSION_COOKIE_SECURE=True)
 
 #session key configuration
 app.secret_key= os.getenv('SECRET_KEY')
