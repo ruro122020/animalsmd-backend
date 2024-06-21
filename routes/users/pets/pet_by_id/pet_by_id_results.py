@@ -19,8 +19,7 @@ def create_illnesses_ids_list(symptoms_list):
   
   #To make it easier to work with the illness_ids_set
   #convert the illnesses_ids_set to a list
-  illnesses_ids_list = list(illnesses_ids_set)
-  return illnesses_ids_list
+  return list(illnesses_ids_set)
 
 def create_illness_list(classification_illness, illness_ids):
   #compare the returned list from IllnessesClassifications table to the illness_list
@@ -31,28 +30,34 @@ def create_illness_list(classification_illness, illness_ids):
       illness_list.append(illness)
   return illness_list
 
+def get_pets_classification_id(pet):
+  #query the speciesclassifications table to find the classification id of the species 
+  species_classification = SpeciesClassification.query.filter_by(species_id = pet.species_id).first()
+  return species_classification.classification
 
+def get_illnesses_based_on_pets_classification(pet_classification):
+  #use classification's id to query the illnessclassifications table, return all illness that matched the classification_id
+  return IllnessClassification.query.filter_by(classification_id = pet_classification.id).all()
+  
 class PetResults(Resource):
   def get(self, id):
-    #get pet from database
+    #get user's pet from database
     pet = Pet.query.filter_by(id=id).first()
 
-    #Now we want to get the illnesses that matches the symptoms id
+    #Now we want to get all the illnesses that matches the symptoms id
     illness_ids = create_illnesses_ids_list(pet.symptoms)
 
     #Now we want to make sure that the illnesses belongs to the classification of the pet
     #for instance, if a user's pet is a dog and the dogs classification is a mammal, 
     #we don't want to return illnesses that belong to a reptile classification
     
-    # query the speciesclassifications table to find the classification id of the species 
-    species_classification = SpeciesClassification.query.filter_by(species_id = pet.species_id).first()
-    pet_classification = species_classification.classification
-
-    #use classification's id to query the illnessclassifications table, return all illness that matched the classification_id
-    classification_illnesses = IllnessClassification.query.filter_by(classification_id = pet_classification.id).all()
+    #get the pet's classification id
+    pet_classification = get_pets_classification_id(pet)
+    
+    illnesses_based_on_pets_classification = get_illnesses_based_on_pets_classification(pet_classification)
 
     #this illness_list will be returned so it needs to be serialized 
-    illness_list = create_illness_list(classification_illnesses, illness_ids)
+    illness_list = create_illness_list(illnesses_based_on_pets_classification, illness_ids)
     
 
     #Now we want to get all the medications that are used for the illness(s)
