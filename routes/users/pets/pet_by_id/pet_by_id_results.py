@@ -62,9 +62,6 @@ class PetResults(Resource):
     #Now we want to get all the medications that are used for the illness(s)
 
 
-
-
-
     #Now we want to get all the products that the user can purchase for their pet's illness
     return [illness_schema.dump(illness) for illness in illness_list], 200
     # return pet_schema.dump(pet), 200
