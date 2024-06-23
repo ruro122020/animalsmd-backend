@@ -12,3 +12,4 @@ from .petsymptom import PetSymptom
 from .illness import Illness
 from .medication import Medication
 from .illnessmedication import IllnessMedication
+from .products import Product
