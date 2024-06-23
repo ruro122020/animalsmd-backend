@@ -6,7 +6,7 @@ class Pet(db.Model):
   __tablename__ = 'pets'
 
   id = db.Column(db.Integer, primary_key=True)
-  name = db.Column(db.String(), nullable=False)
+  name = db.Column(db.String, nullable=False)
   age = db.Column(db.Integer, nullable=False)
   weight = db.Column(db.Integer, nullable=False)
   species_id = db.Column(db.Integer, db.ForeignKey('species.id'), nullable=False)

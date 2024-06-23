@@ -6,6 +6,10 @@ from marshmallow_schemas.pet import pet_schema
 
 
 class PetByID(Resource):
+  def get(self, id):
+    pet = Pet.query.filter_by(id=id).first()
+    return pet_schema.dump(pet)
+  
   def delete(self, id):
     pet = Pet.query.filter_by(id=id).first()
     if pet:
