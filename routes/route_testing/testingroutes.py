@@ -1,3 +1,4 @@
+from itertools import product
 from flask import request, session
 from flask_restful import Resource
 from config import app, db, api
@@ -5,11 +6,12 @@ from marshmallow_schemas.medication import medication_schema, medication_schema_
 from marshmallow_schemas.illness import illness_schema
 from models.models import Illness
 from models.models import Medication
-
+from models.models import Product
+from marshmallow_schemas.product import product_schema
 class TestingRoute(Resource):
   def get(self):
-    illness = Illness.query.first()
-    return illness_schema.dump(illness)
+    product = Product.query.first()
+    return product_schema.dump(product)
     
 
 
