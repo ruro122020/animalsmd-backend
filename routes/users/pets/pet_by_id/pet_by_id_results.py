@@ -43,8 +43,11 @@ def get_illness_medications_products(illness_list):
     products_list = []
     for illness_obj in illness_list:
       for medication_obj in illness_obj.medications:
-        product = Product.query.filter_by(name=medication_obj.name).first()
-        products_list.append(product)
+        #we only want to provide 2 or less products to user
+        if len(products_list) < 2:
+          product = Product.query.filter_by(name=medication_obj.name).first()
+          products_list.append(product)
+    print(products_list)
     return products_list
 
 def add_products_to_each_illness(serialized_illness_list, serialized_product_list):
@@ -75,12 +78,12 @@ class PetResults(Resource):
     #Now we want to get all the medications that are used for the illness(s)
     #Illness model has medications in its serialization rule
 
-    #Now we want to get all the products that the user can purchase for their pet's illness
+    #Now we want to get only 2 or less products that the user can purchase for their pet's illness
     products_list = get_illness_medications_products(illness_list)
 
     #Now we have to serialize the illness and products list to add the products list to the illness object
-    #this decision was made because illnessproducts table still needs to be created for products to be added to the
-    #illnesses table
+    #this decision was made because illnessproducts table still needs to be created for products to
+    #be added to the illnesses table
     serialized_illness_list = [illness_schema.dump(illness) for illness in illness_list]
     serialized_product_list = [product_schema.dump(product) for product in products_list]
 
