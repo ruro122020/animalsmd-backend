@@ -1,7 +1,7 @@
 from config import db
 
 class Cart(db.Model):
-  __tableuser__ = 'carts'
+  __tablename__ = 'carts'
 
   id = db.Column(db.Integer, primary_key=True)
   user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
@@ -10,14 +10,14 @@ class Cart(db.Model):
 
   
   user = db.relationship('User', back_populates='cart')
-  products = db.relationship('Products', back_populates='cart')
+  products = db.relationship('Product', back_populates='cart')
 
   #methods to communicate with database
   @classmethod
   def create_row(cls, user, product, quantity):
-    product = cls(user_id=user, product_id=product, quantity= quantity)
-    product.save_db()
-    return product
+    cart = cls(user_id=user, product_id=product, quantity= quantity)
+    cart.save_db()
+    return cart
   
   def save_db(self):
     db.session.add(self)
