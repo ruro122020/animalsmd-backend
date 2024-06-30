@@ -10,6 +10,8 @@ class Product(db.Model):
   prescription = db.Column(db.Boolean, nullable=False)
 
 
+  cart = db.relationship('Cart', back_populates='products')
+  
   #methods to communicate with database
   @classmethod
   def create_row(cls, name, price, description, prescription):

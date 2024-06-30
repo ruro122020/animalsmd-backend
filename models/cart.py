@@ -9,8 +9,8 @@ class Cart(db.Model):
   quantity = db.Column(db.Integer, nullable=False)
 
   
-  # user = db.relationship()
-  # products = db.relationship()
+  user = db.relationship('User', back_populates='cart')
+  products = db.relationship('Products', back_populates='cart')
 
   #methods to communicate with database
   @classmethod

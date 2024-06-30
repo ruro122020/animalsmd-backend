@@ -18,6 +18,7 @@ class User(db.Model):
   _password_hash = db.Column(db.String, nullable=False)
 
   #relationships
+  cart = db.relationship('Cart', back_populates='user')
   
   @validates('name')
   def validate_name(self, key, name):

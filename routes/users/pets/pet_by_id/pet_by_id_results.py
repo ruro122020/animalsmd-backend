@@ -94,4 +94,4 @@ class PetResults(Resource):
     
 
 
-api.add_resource(PetResults, '/user/pets/<int:id>/results', endpoint='results')
+api.add_resource(PetResults, '/user/pets/<int:id>/results', endpoint='user_pet_results')

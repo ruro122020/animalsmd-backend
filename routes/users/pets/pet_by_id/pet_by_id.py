@@ -27,4 +27,4 @@ class PetByID(Resource):
       
     return {"error": "Pet does not exist"}, 400
 
-api.add_resource(PetByID, '/user/pets/<int:id>')
+api.add_resource(PetByID, '/user/pets/<int:id>', endpoint='user_pet_id')
