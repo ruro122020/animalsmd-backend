@@ -1,18 +1,14 @@
 from config import ma
 from models.models import User
-
+from flask_marshmallow.fields import fields
 
 class UserSchema(ma.Schema):
   class Meta:
     model = User
     load_instance = True
-
-  id = ma.Integer()
-  name = ma.String()
-  email = ma.String()
-  username = ma.String()
-
-
+    fields = ('id', 'name', 'email', 'username', 'cart_products')
+  
+  cart_products = fields.List(fields.Nested('ProductSchema'))
 
 
 user_schema = UserSchema()

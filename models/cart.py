@@ -1,4 +1,6 @@
 from config import db
+from sqlalchemy.ext.hybrid import hybrid_property
+
 
 class Cart(db.Model):
   __tablename__ = 'carts'
@@ -9,13 +11,13 @@ class Cart(db.Model):
   quantity = db.Column(db.Integer, nullable=False)
 
   
-  user = db.relationship('User', back_populates='cart')
-  products = db.relationship('Product', back_populates='cart')
-
+  user = db.relationship('User', back_populates='carts')
+  product = db.relationship('Product', back_populates='carts')
+  
   #methods to communicate with database
   @classmethod
   def create_row(cls, user, product, quantity):
-    cart = cls(user_id=user, product_id=product, quantity= quantity)
+    cart = cls(user=user, product=product, quantity= quantity)
     cart.save_db()
     return cart
   

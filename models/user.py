@@ -18,7 +18,11 @@ class User(db.Model):
   _password_hash = db.Column(db.String, nullable=False)
 
   #relationships
-  cart = db.relationship('Cart', back_populates='user')
+  carts = db.relationship('Cart', back_populates='user')
+  
+  @hybrid_property
+  def cart_products(self):
+    return [cart.product for cart in self.carts]
   
   @validates('name')
   def validate_name(self, key, name):

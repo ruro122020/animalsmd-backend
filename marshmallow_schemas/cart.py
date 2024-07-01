@@ -6,10 +6,10 @@ class CartSchema(ma.Schema):
   class Meta:
     model = Cart
     load_instance=True
-    field = ('id', 'quantity', 'user', 'products')
+    fields = ('id', 'quantity', 'product')
 
-  user = fields.Nested('UserSchema')
-  products = fields.List(fields.Nested('ProductSchema'))
+  # user = fields.Nested('UserSchema')
+  product = fields.Nested('ProductSchema')
 
 
 cart_schema = CartSchema()

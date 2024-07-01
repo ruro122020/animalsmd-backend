@@ -10,7 +10,7 @@ class Product(db.Model):
   prescription = db.Column(db.Boolean, nullable=False)
 
 
-  cart = db.relationship('Cart', back_populates='products')
+  carts = db.relationship('Cart', back_populates='product')
   
   #methods to communicate with database
   @classmethod
