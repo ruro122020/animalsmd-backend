@@ -36,9 +36,6 @@ class CartResource(Resource):
       except Exception as e:
         return {"error": str(e)}, 404
     return {"error": "Cart Not Added"}, 400
-
-
-
     
 
 api.add_resource(CartResource, '/user/cart', endpoint='user_cart')
