@@ -1,10 +1,17 @@
 from flask_restful import Resource
 from config import api
-from flask import request
+from flask import request, session
 from models.models import Cart, User, Product
-from marshmallow_schemas.cart import cart_schema
+from marshmallow_schemas.cart import cart_schema, cart_schema_many
+from marshmallow_schemas.product import product_schema
 
 class CartResource(Resource):
+  def get(self):
+    carts = Cart.query.filter_by(user_id=session.get('user_id')).all()
+    if carts:
+      #we need to get the quantity of each product from the Cart table
+      return cart_schema_many.dump(carts), 200
+    return 204
 
   def post(self):
     json = request.get_json()
@@ -29,9 +36,6 @@ class CartResource(Resource):
       except Exception as e:
         return {"error": str(e)}, 404
     return {"error": "Cart Not Added"}, 400
-  
-  def patch(self):
-    pass
 
 
 
