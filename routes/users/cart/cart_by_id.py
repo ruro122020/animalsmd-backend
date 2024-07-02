@@ -14,6 +14,13 @@ class CartByID(Resource):
     cart.update_db(json)
     return cart_schema.dump(cart), 200
 
+  def delete(self, id):
+    cart = Cart.query.filter_by(id=id).first()
+    if not cart:
+      return {"error": "Cart does not exist"}, 400
+    
+    cart.delete_db()
+    return {}, 200
     
 
 
