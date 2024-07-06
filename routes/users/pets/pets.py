@@ -30,7 +30,7 @@ def add_pets_symptoms(user_pet, pet):
 
 class Pets(Resource):
   def get(self):
-    user_pets = Pet.query.filter_by(user_id = session.get('user_id')).all()
+    user_pets = Pet.query.filter_by(user_id = session.get('user_id')).order_by(Pet.id).all()
     return pet_schema_many.dump(user_pets), 200
     
   def post(self):
