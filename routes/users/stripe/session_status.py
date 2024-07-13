@@ -11,5 +11,4 @@ class SessionStatus(Resource):
     return jsonify(status=session.status, customer_email=session.customer_details.email)
 
 
-
 api.add_resource(SessionStatus, '/user/session-status')

@@ -37,8 +37,13 @@ class Pets(Resource):
     user_pet = request.get_json()
     
     if not user_pet:
-      return {'error': 'User pet info missing'}, 400
+      return {"error": 'User pet info missing'}, 400
    
+    pet_exist = Pet.query.filter_by(name=user_pet.get('name')).first()
+
+    if pet_exist:
+      return {"error":"Pet already Exist"}, 409
+
     user_id = session.get('user_id')
     species_name = user_pet.get('type')
     user = get_user(user_id)

@@ -10,7 +10,7 @@ class CartResource(Resource):
     carts = Cart.query.filter_by(user_id=session.get('user_id')).order_by(Cart.id).all()
     if carts:
       return cart_schema_many.dump(carts), 200
-    return 204
+    return {"error": "There are no products in user's cart"}
 
   def post(self):
     json = request.get_json()
@@ -39,6 +39,7 @@ class CartResource(Resource):
   def delete(self):
     user_session_id = session.get('user_id')
     if user_session_id:
+      print(user_session_id)
       carts = Cart.query.filter_by(user_id = user_session_id).all()
       if carts:
         for cart in carts:

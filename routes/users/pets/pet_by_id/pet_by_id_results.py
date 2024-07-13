@@ -88,7 +88,10 @@ class PetResults(Resource):
     serialized_product_list = [product_schema.dump(product) for product in products_list]
 
     results = add_products_to_each_illness(serialized_illness_list, serialized_product_list)
-
+    
+    if not results:
+      return {"error":"No Results found"}, 404
+    
     return results, 200
 
     
