@@ -47,7 +47,7 @@ class Pets(Resource):
     user_id = session.get('user_id')
     species_name = user_pet.get('type')
     user = get_user(user_id)
-    species = get_species(species_name)
+    species = get_species(species_name.lower())
     
     if not user:
       return {"error":"user of pet does not exist"}, 400

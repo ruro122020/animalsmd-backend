@@ -11,7 +11,7 @@ from marshmallow_schemas.symptomsclassification import symptom_classification_sc
 class SpeciesByType(Resource):
   def get(self, type_name):
     #query species table in the database
-    species = Species.query.filter(Species.type_name == type_name).first()
+    species = Species.query.filter(Species.type_name == type_name.lower()).first()
     #return error if not found
     if not species:
       return {"error": "Species not found"}, 404
