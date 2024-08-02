@@ -2,6 +2,13 @@ from config import db, app
 from models.models import Illness
 from .illnesses_data import illnesses_data
 
+#helpers
+
+def has_illness(illness):
+  illness_db = Illness.query.filter_by(name=illness).first()
+  return illness_db
+
+#############
 
 def delete_illness_data():
   Illness.query.delete()
@@ -12,7 +19,9 @@ def seed_illness_table():
     for illness, description_remedy_obj in illnesses_data.items():
       description = description_remedy_obj.get('description')
       remedy = description_remedy_obj.get('remedy')
-      Illness.create_row(name=illness, description=description, remedy=remedy)
+    
+      if not has_illness(illness):
+        Illness.create_row(name=illness, description=description, remedy=remedy)
 
 def update_illness_table():
     with app.app_context():
@@ -29,4 +38,4 @@ def update_illness_table():
 
 
 
-update_illness_table()
+seed_illness_table()

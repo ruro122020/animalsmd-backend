@@ -18,8 +18,16 @@ illnesses_data = {
         "remedy": "To manage avian flu, it's crucial to maintain their warmth, hydration, and stress levels. Ensure the bird has easy access to food and water to support its recovery. Implementing strict biosecurity measures is essential to prevent the spread of the virus to other birds. These measures are vital for managing avian flu effectively and minimizing its impact on bird populations. Treatment primarily focuses on supportive care, biosecurity measures, and vaccination when available."
     },
     #THIS ILLNESS NEEDS TO BE ADDED TO THE DATABASE
-    # "psittacosis": {
-    #     "description": "Psittacosis is treated primarily with antibiotics like doxycycline. In the absence of medication, supportive care and hygiene are crucial.",
-    #     "remedies": "To manage psittacosis, it's essential to isolate the infected bird to prevent the spread of the infection to other birds. Maintain a clean and hygienic environment to reduce the risk of further infection. Provide supportive care such as fluids and proper nutrition to aid in the bird's recovery. Doxycycline is an antibiotic commonly used to treat psittacosis in birds. This antibiotic should only be administered under the guidance and prescription of a qualified veterinarian. Consult your vet to determine the appropriate dosage and administration method for your pet's condition."
-    # }
+    "psittacosis": {
+        "description": "Psittacosis is treated primarily with antibiotics like doxycycline. In the absence of medication, supportive care and hygiene are crucial.",
+        "remedy": "To manage psittacosis, it's essential to isolate the infected bird to prevent the spread of the infection to other birds. Maintain a clean and hygienic environment to reduce the risk of further infection. Provide supportive care such as fluids and proper nutrition to aid in the bird's recovery. Doxycycline is an antibiotic commonly used to treat psittacosis in birds. This antibiotic should only be administered under the guidance and prescription of a qualified veterinarian. Consult your vet to determine the appropriate dosage and administration method for your pet's condition."
+     },
+    "rabies": {
+    "description": "Rabies is a viral disease that affects the central nervous system of mammals, primarily transmitted through the bite of a rabid animal. It is almost always fatal once symptoms appear.",
+    "remedy": "Treatment involves immediate and thorough washing of the wound with soap and water, followed by post-exposure prophylaxis (PEP) with a series of rabies vaccinations and administration of rabies immunoglobulin for immediate passive immunity."
+      },
+    "canine_distemper": {
+    "description": "Canine distemper is a highly contagious viral disease affecting dogs, characterized by respiratory, gastrointestinal, and neurological symptoms.",
+    "remedy": "Treatment includes supportive care such as hydration, nutritional support, and warmth, administering antibiotics to treat secondary bacterial infections, and using anticonvulsants like phenobarbital or potassium bromide to control seizures."
+      }
 }
