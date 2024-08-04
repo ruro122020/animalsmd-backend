@@ -50,7 +50,7 @@ class SymptomClassification(db.Model):
       self._symptom = value
 
   @classmethod
-  def create(cls, classification_inst, symptom_inst):
+  def create_row(cls, classification_inst, symptom_inst):
     symptomclassification = cls(classification = classification_inst, symptom= symptom_inst)
     symptomclassification.save()
     return symptomclassification

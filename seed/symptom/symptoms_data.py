@@ -7,5 +7,12 @@ symptoms_data = [
     "runny nose",
     "ruffled feathers",
     "difficulty breathing",
-    "decreased egg production"
+    "decreased egg production",
+    "fever",
+    "excessive salivation",
+    "paralysis",
+    "muscle weakness",
+    "nasal discharge",
+    "eye discharge",
+    "seizures"
 ]
