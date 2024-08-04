@@ -1,3 +1,4 @@
+from sqlalchemy import Nullable
 from config import db
 from sqlalchemy.orm import validates
 from sqlalchemy.ext.hybrid import hybrid_property
@@ -6,9 +7,9 @@ from sqlalchemy.ext.hybrid import hybrid_property
 class IllnessSymptom(db.Model):
   __tablename__ = 'illnessessymptoms'
 
-  id = db.Column(db.Integer, primary_key=True)
-  illness_id = db.Column(db.Integer, db.ForeignKey('illnesses.id'))
-  symptom_id = db.Column(db.Integer, db.ForeignKey('symptoms.id'))
+  id = db.Column(db.Integer, primary_key=True, nullable=False)
+  illness_id = db.Column(db.Integer, db.ForeignKey('illnesses.id'), nullable=False)
+  symptom_id = db.Column(db.Integer, db.ForeignKey('symptoms.id'), nullable=False)
 
   #relationships
   illness = db.relationship('Illness', back_populates='illness_symptom')
