@@ -7,8 +7,8 @@ class IllnessClassification(db.Model):
   __tablename__ = 'illnessesclassifications'
 
   id = db.Column(db.Integer, primary_key=True)
-  illness_id = db.Column(db.Integer, db.ForeignKey('illnesses.id'))
-  classification_id = db.Column(db.Integer, db.ForeignKey('classifications.id'))
+  illness_id = db.Column(db.Integer, db.ForeignKey('illnesses.id'), nullable=False)
+  classification_id = db.Column(db.Integer, db.ForeignKey('classifications.id'), nullable=False)
 
   illness = db.relationship('Illness', back_populates='illness_classification')
   classification = db.relationship('Classification', back_populates='illness_classification')

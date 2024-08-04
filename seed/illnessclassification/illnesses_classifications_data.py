@@ -1,6 +1,6 @@
 illness_classification_data = {
   "reptile": ["scale rot"],
-  "ave":['avian flu'],
-  "mammal": ["respiratory infection"]
+  "ave":['avian flu',"psittacosis"],
+  "mammal": ["respiratory infection", "rabies", "canine_distemper"]
 
 }
