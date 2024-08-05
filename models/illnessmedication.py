@@ -5,8 +5,8 @@ class IllnessMedication(db.Model):
   __tablename__ = 'illnessesmedications'
 
   id = db.Column(db.Integer, primary_key=True)
-  illness_id = db.Column(db.Integer, ForeignKey('illnesses.id'))
-  medication_id = db.Column(db.Integer, ForeignKey('medications.id'))
+  illness_id = db.Column(db.Integer, ForeignKey('illnesses.id'), nullable=False)
+  medication_id = db.Column(db.Integer, ForeignKey('medications.id'), nullable=False)
 
   #relationships
   illness = db.relationship('Illness', back_populates='illness_medication')
