@@ -4,10 +4,12 @@ from models.models import Medication
 
 def seed_medications_table():
   with app.app_context():
-    Medication.query.delete()
-
+  
     for medication, description in medications_data.items():
-      Medication.create_row(medication, description)
+      #check if medication exist in medications table
+      medication_exist = Medication.query.filter_by(name = medication).first()
+      if not medication_exist:
+       Medication.create_row(medication, description)
       
 
 seed_medications_table()
