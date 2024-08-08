@@ -13,7 +13,7 @@ illnesses_data = {
       "description": "Rabies is a viral disease that affects the central nervous system of mammals, primarily transmitted through the bite of a rabid animal. It is almost always fatal once symptoms appear.",
       "remedy": "Treatment involves immediate and thorough washing of the wound with soap and water, followed by post-exposure prophylaxis (PEP) with a series of rabies vaccinations and administration of rabies immunoglobulin for immediate passive immunity."
       },
-    "canine_distemper": {
+    "canine distemper": {
       "description": "Canine distemper is a highly contagious viral disease affecting dogs, characterized by respiratory, gastrointestinal, and neurological symptoms.",
       "remedy": "Treatment includes supportive care such as hydration, nutritional support, and warmth, administering antibiotics to treat secondary bacterial infections, and using anticonvulsants like phenobarbital or potassium bromide to control seizures."
       },

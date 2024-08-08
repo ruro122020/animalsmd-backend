@@ -60,6 +60,8 @@ class PetResults(Resource):
     #get user's pet from database
     pet = Pet.query.filter_by(id=id).first()
 
+    if not pet:
+      return {"error": "pet id not found or pet does not exist"}, 400
     #Now we want to get all the illnesses that matches the symptoms id
     illness_ids = create_illnesses_ids_list(pet.symptoms)
 
