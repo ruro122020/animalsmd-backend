@@ -9,6 +9,4 @@ def seed_products_table():
     for product in products_data:
       Product.create_row(product.get("name"), product.get("price"), product.get("description"), product.get("prescription")) 
 
-
-
 seed_products_table()

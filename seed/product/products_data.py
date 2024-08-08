@@ -1,5 +1,5 @@
 products_data = [
-{
+ {
         'name': 'enrofloxacin (baytril)',
         'description': "Enrofloxacin, known by the brand name Baytril, is a broad-spectrum antibiotic commonly used in veterinary medicine. It is effective against a wide range of bacterial infections in animals, including respiratory, urinary tract, and skin infections. Baytril comes in various forms such as tablets, injectable solutions, and oral suspensions. Look for the Baytril label to ensure you are getting the right medication for treating bacterial infections in your pets.",
         'price': 25,  # Replace with actual price based on current market data
@@ -24,13 +24,13 @@ products_data = [
         'prescription': False
     },
     {
-        'name': 'rabies_vaccine',
+        'name': 'rabies vaccine',
         'description': "The rabies vaccine is administered as part of post-exposure prophylaxis (PEP) to prevent the onset of rabies following exposure to the virus. It stimulates the body's immune system to produce antibodies against the rabies virus.",
         'price': 50,  # Replace with actual price based on current market data
         'prescription': True
     },
     {
-        'name': 'rabies_immunoglobulin',
+        'name': 'rabies immunoglobulin',
         'description': "Rabies immunoglobulin provides immediate passive immunity by supplying ready-made antibodies against the rabies virus, used in conjunction with the rabies vaccine in PEP.",
         'price': 200,  # Replace with actual price based on current market data
         'prescription': True
@@ -42,7 +42,7 @@ products_data = [
         'prescription': True
     },
     {
-        'name': 'potassium_bromide',
+        'name': 'potassium bromide',
         'description': "Potassium bromide is an anticonvulsant used in dogs to control seizures associated with canine distemper. It is often used in combination with other anticonvulsants like phenobarbital.",
         'price': 40,  # Replace with actual price based on current market data
         'prescription': True
@@ -66,19 +66,19 @@ products_data = [
         'prescription': True
     },
     {
-        'name': 'tobramycin_eye_drops',
+        'name': 'tobramycin eye drops',
         'description': "Tobramycin eye drops are an antibiotic treatment for eye discharge caused by bacterial infections in mammals, aves, and reptiles.",
         'price': 20,  # Replace with actual price based on current market data
         'prescription': True
     },
     {
-        'name': 'ciprofloxacin_eye_drops',
+        'name': 'ciprofloxacin eye drops',
         'description': "Ciprofloxacin eye drops are an antibiotic used to treat bacterial eye infections causing eye discharge in mammals, aves, and reptiles.",
         'price': 18,  # Replace with actual price based on current market data
         'prescription': True
     },
     {
-        'name': 'artificial_tears',
+        'name': 'artificial tears',
         'description': "Artificial tears are lubricating eye drops used to relieve dryness and irritation in the eyes, often used as supportive care for animals with eye discharge.",
         'price': 8,  # Replace with actual price based on current market data
         'prescription': False
