@@ -46,7 +46,8 @@ def get_illness_medications_products(illness_list):
         #we only want to provide 2 or less products to user
         if len(products_list) < 2:
           product = Product.query.filter_by(name=medication_obj.name).first()
-          products_list.append(product)
+          if product:
+            products_list.append(product)
     print(products_list)
     return products_list
 
