@@ -9,10 +9,10 @@ illness_medication_data = {
     'ceftazidime (Fortaz)'
     ],
   "avian flu":[],
-    "rabies": [
-    "rabies_vaccine",
-    "rabies_immunoglobulin"
-  ],
+  "rabies": [
+  "rabies_vaccine",
+  "rabies_immunoglobulin"
+    ],
   "canine_distemper": [
     "doxycycline",
     "amoxicillin",

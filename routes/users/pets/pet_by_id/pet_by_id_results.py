@@ -7,6 +7,9 @@ from marshmallow_schemas.illness import illness_schema
 from marshmallow_schemas.illnesssymptom import illness_symptom_schema
 from marshmallow_schemas.pet import pet_schema
 from marshmallow_schemas.product import product_schema
+import random
+
+
 #The end goal is to return illness, medications, and products from results
 
 def create_illnesses_ids_list(symptoms_list):
@@ -42,13 +45,17 @@ def get_illnesses_based_on_pets_classification(pet_classification):
 def get_illness_medications_products(illness_list):
     products_list = []
     for illness_obj in illness_list:
+      # print('medications from illness obj',illness_obj.medications)
       for medication_obj in illness_obj.medications:
+        print('illness', illness_obj.name)
+        print('illness medication:', medication_obj.name)
+        
         #we only want to provide 2 or less products to user
-        if len(products_list) < 2:
-          product = Product.query.filter_by(name=medication_obj.name).first()
-          if product:
-            products_list.append(product)
-    print(products_list)
+        product = Product.query.filter_by(name=medication_obj.name).first()
+          # print('product name', product.name)
+        if product:
+          products_list.append(product)
+    # print(products_list)
     return products_list
 
 def add_products_to_each_illness(serialized_illness_list, serialized_product_list):
