@@ -1,3 +1,4 @@
+from re import I
 from flask import request, session
 from flask_restful import Resource
 from config import api, db
@@ -8,7 +9,7 @@ from marshmallow_schemas.illnesssymptom import illness_symptom_schema
 from marshmallow_schemas.pet import pet_schema
 from marshmallow_schemas.product import product_schema
 import random
-
+import ipdb
 
 #The end goal is to return illness, medications, and products from results
 
@@ -43,13 +44,14 @@ def get_illnesses_based_on_pets_classification(pet_classification):
   return IllnessClassification.query.filter_by(classification_id = pet_classification.id).all()
 
 def get_illness_medications_products(illness_list):
-    products_list = []
+   
     for illness_obj in illness_list:
-      # print('medications from illness obj',illness_obj.medications)
+      #product list data structor needs to change to assign the products to its appropriate illness. 
+      #currently all the products are being combined for each illness therefore not making the distinction
+      #on which product belongs to which illness resulting in return the wrong products for each illness
+      products_list = []
+      breakpoint()
       for medication_obj in illness_obj.medications:
-        print('illness', illness_obj.name)
-        print('illness medication:', medication_obj.name)
-        
         #we only want to provide 2 or less products to user
         product = Product.query.filter_by(name=medication_obj.name).first()
           # print('product name', product.name)
