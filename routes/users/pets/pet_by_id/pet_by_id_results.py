@@ -44,20 +44,19 @@ def get_illnesses_based_on_pets_classification(pet_classification):
   return IllnessClassification.query.filter_by(classification_id = pet_classification.id).all()
 
 def get_illness_medications_products(illness_list):
-   
+    products_list = {}
+    #set illness as keys to products_list
     for illness_obj in illness_list:
-      #product list data structor needs to change to assign the products to its appropriate illness. 
-      #currently all the products are being combined for each illness therefore not making the distinction
-      #on which product belongs to which illness resulting in return the wrong products for each illness
-      products_list = []
-      breakpoint()
-      for medication_obj in illness_obj.medications:
-        #we only want to provide 2 or less products to user
-        product = Product.query.filter_by(name=medication_obj.name).first()
-          # print('product name', product.name)
-        if product:
-          products_list.append(product)
-    # print(products_list)
+      if illness_obj.name not in products_list:
+        #find the product
+        products_list[illness_obj.name] = []
+      #add products of illness as an array to the matching illness keys
+      for medication in illness_obj.medications:
+        #find products through medication name
+        product = Product.query.filter_by(name = medication.name).first()
+        #add product to the matching illness in products_list
+        products_list[illness_obj.name].append(product)
+      #add illness property with an array of products
     return products_list
 
 def add_products_to_each_illness(serialized_illness_list, serialized_product_list):
