@@ -98,6 +98,10 @@ class PetResults(Resource):
     serialized_illness_list = [illness_schema.dump(illness) for illness in illness_list]
     serialized_product_list = [product_schema.dump(product) for product in products_list]
 
+    #IMPORTANT:
+    #products_list data structure is now different. Its an object with the illness name as keys 
+    #with an array of products as it's value. The products array for each illness needs to be serialized
+    #figure that out next time you work on this. 
     results = add_products_to_each_illness(serialized_illness_list, serialized_product_list)
     
     if not results:
