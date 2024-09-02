@@ -1,0 +1,1 @@
+illness_product_data = ["scale rot", "respiratory infection", "rabies", "canine distemper",  "avian flu", "psittacosis"]
