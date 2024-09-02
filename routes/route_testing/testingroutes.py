@@ -12,6 +12,7 @@ from models.models import Cart
 from marshmallow_schemas.cart import cart_schema_many
 from marshmallow_schemas.users import user_schema
 
+
 class TestingRoute(Resource):
   def get(self):
     user = User.query.first()

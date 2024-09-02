@@ -7,6 +7,10 @@ class IllnessProduct(db.Model):
   illness_id = db.Column(db.Integer, db.ForeignKey('illnesses.id'), nullable=False)
   product_id = db.Column(db.Integer, db.ForeignKey('products.id'), nullable=False)
 
+  #relationships
+  illness = db.relationship('Illness', back_populates='illness_product')
+  product = db.relationship('Product', back_populates='illness_product')
+
 
   @classmethod
   def create_row(cls, illness, product):

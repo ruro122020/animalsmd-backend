@@ -19,6 +19,13 @@ class Illness(db.Model):
   #relationship with illnessmedication
   illness_medication = db.relationship('IllnessMedication', back_populates = 'illness', cascade='all, delete-orphan' )
 
+  #relationship with illnessproduct
+  illness_product = db.relationship('IllnessProduct', back_populates='illness', cascade='all, delete-orphan' )
+
+  @hybrid_property
+  def products(self):
+    return [illness.product for illness in self.illness_product]
+  
   @hybrid_property
   def symptoms(self):
     return [illness.symptom for illness in self.illness_symptom]

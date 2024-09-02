@@ -11,6 +11,7 @@ class Product(db.Model):
 
 
   carts = db.relationship('Cart', back_populates='product')
+  illness_product = db.relationship('IllnessProduct', back_poplates='product')
   
   #methods to communicate with database
   @classmethod
