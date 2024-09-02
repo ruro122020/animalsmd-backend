@@ -14,3 +14,4 @@ from .medication import Medication
 from .illnessmedication import IllnessMedication
 from .product import Product
 from .cart import Cart
+from .illnessproduct import IllnessProduct
