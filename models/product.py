@@ -9,9 +9,10 @@ class Product(db.Model):
   description = db.Column(db.String, nullable=False)
   prescription = db.Column(db.Boolean, nullable=False)
 
-
+  #relationships
   carts = db.relationship('Cart', back_populates='product')
-  illness_product = db.relationship('IllnessProduct', back_poplates='product')
+
+  illness_product = db.relationship('IllnessProduct', back_populates='product')
   
   #methods to communicate with database
   @classmethod
