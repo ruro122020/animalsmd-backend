@@ -12,6 +12,5 @@ class IllnessMedicationSchema(ma.Schema):
   illness = fields.Nested('IllnessSchema')
 
 
-
 illness_medication = IllnessMedicationSchema()
 illness_medication_many = IllnessMedicationSchema(many=True)

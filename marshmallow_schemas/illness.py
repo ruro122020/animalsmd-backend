@@ -6,7 +6,9 @@ class IllnessSchema(ma.Schema):
   class Meta:
     model = Illness
     load_instance = True
-    fields = ('id', 'name', 'symptoms', 'description', 'remedy', 'medications')
+    include_relationships = True
+    #iMPORTANT NOTICE: DON'T FORGET TO ADD THE METHODS TO THE FIELDS TUPLE!
+    fields = ('id', 'name', 'symptoms', 'description', 'remedy', 'medications', 'products')
 
   symptoms = fields.List(fields.Nested('SymptomSchema'))
   medications = fields.List(fields.Nested('MedicationSchema'))
