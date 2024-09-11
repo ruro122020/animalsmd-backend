@@ -10,6 +10,8 @@ class IllnessSchema(ma.Schema):
 
   symptoms = fields.List(fields.Nested('SymptomSchema'))
   medications = fields.List(fields.Nested('MedicationSchema'))
+  products = fields.List(fields.Nested('ProductSchema'))
 
+  
 illness_schema = IllnessSchema()
 illness_schema_many = IllnessSchema(many=True)

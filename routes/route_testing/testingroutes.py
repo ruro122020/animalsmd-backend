@@ -11,14 +11,16 @@ from marshmallow_schemas.product import product_schema
 from models.models import Cart
 from marshmallow_schemas.cart import cart_schema_many
 from marshmallow_schemas.users import user_schema
-
+from marshmallow_schemas.illness import illness_schema
+from marshmallow_schemas.illnessproduct import illness_product
+from models.models import IllnessProduct
 
 class TestingRoute(Resource):
   def get(self):
-    user = User.query.first()
+    illness = IllnessProduct.query.filter_by(illness_id = 6).first()
 
-    print('user product')
-    return user_schema.dump(user)
+    print('illness product')
+    return illness_product.dump(illness)
     
 
 
