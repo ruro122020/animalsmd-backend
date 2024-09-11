@@ -8,7 +8,6 @@ from marshmallow_schemas.illness import illness_schema
 from marshmallow_schemas.illnesssymptom import illness_symptom_schema
 from marshmallow_schemas.pet import pet_schema
 from marshmallow_schemas.product import product_schema
-import random
 import ipdb
 
 #The end goal is to return illness, medications, and products from results
@@ -43,27 +42,6 @@ def get_illnesses_based_on_pets_classification(pet_classification):
   #use classification's id to query the illnessclassifications table, return all illness that matched the classification_id
   return IllnessClassification.query.filter_by(classification_id = pet_classification.id).all()
 
-def get_illness_medications_products(illness_list):
-    products_list = {}
-    #set illness as keys to products_list
-    for illness_obj in illness_list:
-      if illness_obj.name not in products_list:
-        #find the product
-        products_list[illness_obj.name] = []
-      #add products of illness as an array to the matching illness keys
-      for medication in illness_obj.medications:
-        #find products through medication name
-        product = Product.query.filter_by(name = medication.name).first()
-        #add product to the matching illness in products_list
-        products_list[illness_obj.name].append(product)
-      #add illness property with an array of products
-    return products_list
-
-def add_products_to_each_illness(serialized_illness_list, serialized_product_list):
-      for illness_obj in serialized_illness_list:
-        illness_obj["products"] = serialized_product_list
-      return serialized_illness_list
-
 class PetResults(Resource):
   def get(self, id):
     #get user's pet from database
@@ -83,35 +61,16 @@ class PetResults(Resource):
     
     illnesses_based_on_pets_classification = get_illnesses_based_on_pets_classification(pet_classification)
 
-    #this illness_list will be returned so it needs to be serialized 
+    #this illness_list needs to be serialized 
     illness_list = create_illness_list(illnesses_based_on_pets_classification, illness_ids)
       
-    #Now we want to get all the medications that are used for the illness(s)
-    #Illness model has medications in its serialization rule
-
-    #Now we want to get only 2 or less products that the user can purchase for their pet's illness
-    products_list = get_illness_medications_products(illness_list)
-
-    #Now we have to serialize the illness and products list to add the products list to the illness object
-    #this decision was made because illnessproducts table still needs to be created for products to
-    #be added to the illnesses table
+    #Now we have to serialize each illness in the illness_list
     serialized_illness_list = [illness_schema.dump(illness) for illness in illness_list]
-    serialized_product_list = [product_schema.dump(product) for product in products_list]
-
-    #IMPORTANT:
-    #products_list data structure is now different. Its an object with the illness name as keys 
-    #with an array of products as it's value. The products array for each illness needs to be serialized
-    #figure that out next time you work on this. 
     
-
-    results = add_products_to_each_illness(serialized_illness_list, serialized_product_list)
-    
-    if not results:
+    if not serialized_illness_list:
       return {"error":"No Results found"}, 404
     
-    return results, 200
-
-    
+    return serialized_illness_list, 200
 
 
 api.add_resource(PetResults, '/user/pets/<int:id>/results', endpoint='user_pet_results')
