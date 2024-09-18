@@ -24,13 +24,13 @@ import os
 supauser = os.getenv('SUPAUSER')
 supapassword =os.getenv('SUPAPASSWORD')
 supadbname =os.getenv('SUPADBNAME')
-supaport = os.getenv('SUPAPORT')
+supaport = float(os.getenv('SUPAPORT'))
 
 # Instantiate app, set attributes
 app = Flask(__name__)
 
 #Postgresql string
-app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://{supauser}:{supapassword}@aws-0-us-east-1.pooler.supabase.com:6543/{supadbname}'
+app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://{supauser}:{supapassword}@aws-0-us-east-1.pooler.supabase.com:{supaport}/{supadbname}'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.json.compact = False
 
