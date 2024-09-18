@@ -30,7 +30,7 @@ supaport = os.getenv('SUPAPORT')
 app = Flask(__name__)
 
 #Postgresql string
-app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://{supauser}:{supapassword}@aws-0-us-east-1.pooler.supabase.com:{supaport}/{supadbname}'
+app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://{supauser}:{supapassword}@aws-0-us-east-1.pooler.supabase.com:6543/{supadbname}'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.json.compact = False
 
