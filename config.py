@@ -24,7 +24,7 @@ import os
 supauser = os.getenv('SUPAUSER')
 supapassword =os.getenv('SUPAPASSWORD')
 supadbname =os.getenv('SUPADBNAME')
-supaport = int(os.getenv('SUPAPORT'))
+supaport = os.getenv('SUPAPORT')
 
 # Instantiate app, set attributes
 app = Flask(__name__)
