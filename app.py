@@ -13,4 +13,4 @@ def check_login():
   return authenticate.check_authentication()
 
 if __name__ == '__main__':
-    app.run(port=5555, debug=True)
+    app.run(port=8000, debug=True)

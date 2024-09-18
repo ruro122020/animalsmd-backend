@@ -19,6 +19,7 @@ marshmallow-sqlalchemy = "*"
 python-dotenv = "*"
 psycopg2 = "*"
 psycopg2-binary = "*"
+gunicorn = "*"
 
 [requires]
 python_full_version = "3.8.13"
