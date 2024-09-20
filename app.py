@@ -13,4 +13,4 @@ def check_login():
   return authenticate.check_authentication()
 
 if __name__ == '__main__':
-    app.run(port=8000, debug=False)
+    app.run(host='https://running-kimmi-ruthsweb-5ee6d665.koyeb.app', port=8000)
