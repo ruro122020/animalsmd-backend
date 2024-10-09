@@ -14,13 +14,25 @@ class SpeciesByType(Resource):
     species = Species.query.filter(Species.type_name == type_name.lower()).first()
     #return error if not found
     if not species:
-      return {"error": "Species not found"}, 404
+      return {
+        "status":"failed", 
+        "error": {
+          "message":"Species not found"
+        }, 
+        "code": 404
+        }
     
     #query speciesclassification table to find what classification species is from 
     species_classification = SpeciesClassification.query.filter_by(species_id = species.id).first()
     #return error if not found
     if not species_classification:
-      return {"error": "SpeciesClassification not found"}, 404
+      return {
+        "status":"failed", 
+        "error": {
+          "message":"SpeciesClassification not found"
+        }, 
+        "code": 404
+        }
     
     #assign the classification obj, queried through species_classification
     classification_inst = species_classification.classification
@@ -29,7 +41,13 @@ class SpeciesByType(Resource):
     classification_symptoms = SymptomClassification.query.filter_by(classification = classification_inst).all()
     #return error if not found
     if not classification_symptoms:
-      return {"error": "SymptomClassification not found"}, 404
+      return {
+        "status":"failed", 
+        "error": {
+          "message":"SymptomClassification not found"
+        }, 
+        "code": 404
+        }
     
     # classification_symptoms data structure is an array these: 
     # {
@@ -60,6 +78,10 @@ class SpeciesByType(Resource):
       "classification_id": classification_inst.id
     }
     
-    return response_obj, 200
+    return {
+      "status":"success",
+      "data": response_obj,
+      "code": 200
+    }
 
 api.add_resource(SpeciesByType, '/species/<type_name>')
