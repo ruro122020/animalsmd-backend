@@ -30,9 +30,7 @@ class CartByID(Resource):
     if not cart:
       return  {
         "status": 'failed',
-        "error": {
-          "message":"Cart does not exist"
-          },
+        "error": {"message":"Cart does not exist"},
         "code": 400
         }
     
