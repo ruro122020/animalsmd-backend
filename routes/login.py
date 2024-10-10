@@ -1,4 +1,4 @@
-from flask import request, session
+from flask import request, session, jsonify
 from flask_restful import Resource
 from config import api
 from models.models import User

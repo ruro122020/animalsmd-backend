@@ -25,24 +25,39 @@ def add_pets_symptoms(user_pet, pet):
     if symptom:
      PetSymptom.create_row(pet=pet, symptom=symptom)
     else:
-      return {"error": f"pet '{symptom_name}' symptom  does not exist"}, 400
+      return {
+        "status": "failed",
+        "error":{"message": f"pet '{symptom_name}' symptom  does not exist"},
+        "code": 400
+      }
   return None
 
 class Pets(Resource):
   def get(self):
     user_pets = Pet.query.filter_by(user_id = session.get('user_id')).order_by(Pet.id).all()
-    return pet_schema_many.dump(user_pets), 200
+    return {
+      "status": "success",
+      "data": pet_schema_many.dump(user_pets),
+      "code": 200
+    }
     
   def post(self):
     user_pet = request.get_json()
     
     if not user_pet:
-      return {"error": 'User pet info missing'}, 400
+      return {
+        "status":"failed",
+        "error":{"message": 'User pet info missing'},
+        "code": 400}
    
     pet_exist = Pet.query.filter_by(name=user_pet.get('name')).first()
 
     if pet_exist:
-      return {"error":"Pet already Exist"}, 409
+      return {
+        "status": "failed",
+        "error":{"message":"Pet already Exist"},
+        "code": 409
+        }
 
     user_id = session.get('user_id')
     species_name = user_pet.get('type')
@@ -50,21 +65,37 @@ class Pets(Resource):
     species = get_species(species_name.lower())
     
     if not user:
-      return {"error":"user of pet does not exist"}, 400
+      return {
+        "status":"failed",
+        "error":{"message":"user of pet does not exist"},
+        "code": 400}
 
     if not species:
-      return {"error":"species of pet does not exist"}, 400
+      return {
+        "status": "failed",
+        "error":{"message":"species of pet does not exist"},
+        "code": 400
+      }
 
     pet = create_pet(user_pet, user, species)
 
     if not user_pet.get('symptoms'):
-      return {"error":"symptoms are missing"}, 400
+      return {
+        "status": "failed",
+        "error":{"message":"symptoms are missing"},
+        "code": 400
+      }
     #user_pet: is an object from the frontend
     #pet: is the object created in create_pet
     error_message = add_pets_symptoms(user_pet, pet)
 
     if error_message:
       return error_message
-    return pet_schema.dump(pet), 200
+    
+    return {
+      "status": "success",
+      "data": pet_schema.dump(pet),
+      "code": 200
+    }
 
 api.add_resource(Pets, '/user/pets', endpoint='pets')
