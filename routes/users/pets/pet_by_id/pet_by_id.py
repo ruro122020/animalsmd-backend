@@ -8,23 +8,51 @@ from marshmallow_schemas.pet import pet_schema
 class PetByID(Resource):
   def get(self, id):
     pet = Pet.query.filter_by(id=id).first()
-    return pet_schema.dump(pet)
+    if not pet:
+      return {
+        "status": "failed",
+        "error": {"message":"pet does not exist"}
+      }
+    return {
+      "status": "success",
+      "data": pet_schema.dump(pet),
+      "code": 200
+    }, 200
   
   def delete(self, id):
     pet = Pet.query.filter_by(id=id).first()
-    if pet:
-      Pet.delete_db(pet)
-      return {}, 200
-
-    return {"error":'Pet does not exist'}
+    if not pet:
+      return {
+        "status": "failed",
+        "errpr":{"message":'Pet does not exist'},
+        "code": 400
+      }, 400
+    
+    Pet.delete_db(pet)
+    return {
+      "status": "success",
+      "message": "Pet has been deleted!",
+      "code": 200
+    }, 200
   
   def patch(self, id):
     pet = Pet.query.filter_by(id=id).first()
     pet_from_user = request.get_json()
-    if pet:
-      pet.update_db(pet_from_user)
-      return pet_schema.dump(pet), 200
+    
+    if not pet:
+      return {
+      "status": "failed",
+      "error":{"message": "Pet does not exist"},
+      "code": 400
+    }, 400
+
+
+    pet.update_db(pet_from_user)
+    return {
+      "status": "success",
+      "data": pet_schema.dump(pet),
+      "code": 200
+    }, 200
       
-    return {"error": "Pet does not exist"}, 400
 
 api.add_resource(PetByID, '/user/pets/<int:id>', endpoint='user_pet_id')

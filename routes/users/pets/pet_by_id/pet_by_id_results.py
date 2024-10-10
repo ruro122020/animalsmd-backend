@@ -48,7 +48,11 @@ class PetResults(Resource):
     pet = Pet.query.filter_by(id=id).first()
 
     if not pet:
-      return {"error": "pet id not found or pet does not exist"}, 400
+      return {
+        "status": "failed",
+        "error":{"message": "pet id not found or pet does not exist"},
+        "code": 400
+      }, 400
     #Now we want to get all the illnesses that matches the symptoms id
     illness_ids = create_illnesses_ids_list(pet.symptoms)
 
@@ -68,9 +72,17 @@ class PetResults(Resource):
     serialized_illness_list = [illness_schema.dump(illness) for illness in illness_list]
     
     if not serialized_illness_list:
-      return {"error":"No Results found"}, 404
+      return {
+        "status":"failed",
+        "error":{"message":"No Results found"},
+        "code": 404
+      }, 404
     
-    return serialized_illness_list, 200
+    return {
+      "status": "success",
+      "data": serialized_illness_list,
+      "code": 200
+    }, 200
 
 
 api.add_resource(PetResults, '/user/pets/<int:id>/results', endpoint='user_pet_results')
