@@ -12,11 +12,23 @@ class Login(Resource):
     if user:
       if user.authenticate(json.get('password')):
         session['user_id'] = user.id
-        return user_schema.dump(user), 200
+        return {
+          "status": "success",
+          "data": user_schema.dump(user),
+          "code": 200
+        }
       else:
-        return {'error':'Invalid Credentials'}, 401
+        return {
+          "status": 'failed',
+          "error":{'message':'Invalid Credentials'},
+          "code": 401
+        }
     else:
-      return {'error': 'User does NOT exist'}, 400
+      return {
+        "status": "failed",
+        "error":{'message': 'User does NOT exist'},
+        "code": 400
+      }
 
 
 api.add_resource(Login, '/login', endpoint='login')
