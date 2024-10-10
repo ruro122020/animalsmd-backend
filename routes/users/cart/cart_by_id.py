@@ -9,18 +9,39 @@ class CartByID(Resource):
     json = request.get_json()
     cart = Cart.query.filter_by(id=id).first()
     if not cart:
-      return {"error": "Cart does not exist"}, 400
+      return {
+        "status": 'failed',
+        "error": {
+          "message":"Cart does not exist"
+          },
+        "code": 400
+        }
     
     cart.update_db(json)
-    return cart_schema.dump(cart), 200
+    serialized_cart = cart_schema.dump(cart)
+    return {
+      "status": "success",
+      "data": serialized_cart,
+      "code": 200
+    }
 
   def delete(self, id):
     cart = Cart.query.filter_by(id=id).first()
     if not cart:
-      return {"error": "Cart does not exist"}, 400
+      return  {
+        "status": 'failed',
+        "error": {
+          "message":"Cart does not exist"
+          },
+        "code": 400
+        }
     
     cart.delete_db()
-    return {}, 200
+    return {
+      "status": "success",
+      "message":"Cart Successfully Deleted!",
+      "code":200
+    }
     
 
 
