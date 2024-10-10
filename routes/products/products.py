@@ -5,8 +5,18 @@ from marshmallow_schemas.product import product_schema_many
 class Products(Resource):
   def get(self):
     products = Product.query.all()
-    if products:
-      return product_schema_many.dump(products), 200
-    return {"error": "Products do not exist"}, 400
+    if not products:
+      return {
+      "status": "failed",
+      "error":{"message": "Products do not exist"},
+      "code": 400
+    }, 400
+    
+    return {
+      "status": "success",
+      "data": product_schema_many.dump(products),
+      "code": 200
+    }, 200
+
 
 api.add_resource(Products, '/products', endpoint='products')

@@ -8,8 +8,16 @@ class ProductById(Resource):
   def get(self, id):
     product = Product.query.filter_by(id=id).first()
     if product:
-      return product_schema.dump(product), 200
+      return {
+        "status": "success",
+        "data": product_schema.dump(product),
+        "code": 200
+      }, 200
 
-    return {"error":"Product not found"}, 404
+    return {
+      "status": "failed",
+      "error":{"message":"Product not found"},
+      "code": 404
+    }, 404
   
 api.add_resource(ProductById, '/products/<int:id>', endpoint='')
