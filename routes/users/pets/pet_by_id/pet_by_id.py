@@ -24,7 +24,7 @@ class PetByID(Resource):
     if not pet:
       return {
         "status": "failed",
-        "errpr":{"message":'Pet does not exist'},
+        "error":{"message":'Pet does not exist'},
         "code": 400
       }, 400
     
