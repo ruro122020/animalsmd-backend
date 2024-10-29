@@ -15,3 +15,4 @@ from .illnessmedication import IllnessMedication
 from .product import Product
 from .cart import Cart
 from .illnessproduct import IllnessProduct
+from .illnessremedy import IllnessRemedy

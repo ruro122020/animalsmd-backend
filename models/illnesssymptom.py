@@ -1,4 +1,3 @@
-from sqlalchemy import Nullable
 from config import db
 from sqlalchemy.orm import validates
 from sqlalchemy.ext.hybrid import hybrid_property
