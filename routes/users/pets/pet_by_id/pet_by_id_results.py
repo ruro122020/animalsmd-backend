@@ -1,13 +1,9 @@
 from re import I
 from flask import request, session
 from flask_restful import Resource
-from config import api, db
-from models.models import Product, IllnessSymptom, Illness, IllnessClassification, SpeciesClassification, Pet
-from sqlalchemy import func
+from config import api
+from models.models import IllnessSymptom, Illness, IllnessClassification, SpeciesClassification, Pet
 from marshmallow_schemas.illness import illness_schema 
-from marshmallow_schemas.illnesssymptom import illness_symptom_schema
-from marshmallow_schemas.pet import pet_schema
-from marshmallow_schemas.product import product_schema
 import ipdb
 
 #The end goal is to return illness, medications, and products from results

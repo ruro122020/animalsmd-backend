@@ -8,7 +8,6 @@ class Illness(db.Model):
   id = db.Column(db.Integer, primary_key=True)
   name = db.Column(db.String, nullable=False)
   description = db.Column(db.String, nullable=False)
-  remedy = db.Column(db.String)
 
   #relationship with illnesses table
   illness_symptom = db.relationship('IllnessSymptom', back_populates='illness', cascade="all, delete-orphan")
