@@ -10,11 +10,10 @@ from faker import Faker
 from app import app
 from config import db
 
-
-from seed import seed_medications_table
-
 if __name__ == '__main__':
-  pass
+  with app.app_context():
+    db.create_all()
+  
   # fake = Faker()
   # with app.app_context():
   #   print("Starting seed...")

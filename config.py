@@ -9,17 +9,17 @@ from flask_restful import Api
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import MetaData
 from flask_marshmallow import Marshmallow
-
+from dotenv import load_dotenv
 import os
 
 #enviroment variables
   #postgresql local machine string:
   ##f'postgresql://{user}:{password}@localhost:5432/{dbname}'
   #local machine database credentials
-# user = os.getenv('USER')
-# password = os.getenv('PASSWORD')
-# dbname = os.getenv('DBNAME')
-
+load_dotenv()
+user = os.getenv('USER')
+password = os.getenv('PASSWORD')
+dbname = os.getenv('DBNAME')
   #supabase database
 supauser = os.getenv('SUPAUSER')
 supapassword =os.getenv('SUPAPASSWORD')
@@ -30,7 +30,8 @@ supaport = os.getenv('SUPAPORT')
 app = Flask(__name__)
 
 #Postgresql string
-app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://{supauser}:{supapassword}@aws-0-us-east-1.pooler.supabase.com:{supaport}/{supadbname}'
+# app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://{supauser}:{supapassword}@aws-0-us-east-1.pooler.supabase.com:{supaport}/{supadbname}'
+app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://ruth:{password}@localhost:5432/animalsmd'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.json.compact = False
 

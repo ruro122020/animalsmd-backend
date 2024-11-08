@@ -10,13 +10,16 @@ def has_illness(illness):
 
 #############
 
-def seed_illness_table():
+def addToPopulatedTable():
   with app.app_context():
-    for illness, description_remedy_obj in illnesses_data.items():
-      description = description_remedy_obj.get('description')
-      remedy = description_remedy_obj.get('remedy')
-    
-      if not has_illness(illness):
-        Illness.create_row(name=illness, description=description, remedy=remedy)
+    for illness, description in illnesses_data.items():
+      if bool(has_illness(illness)):
+        Illness.create_row(name=illness, description=description)
 
-seed_illness_table()
+def seed_empty_table():
+  with app.app_context():
+    for illness, description in illnesses_data.items():
+      Illness.create_row(name=illness, description=description)
+
+
+seed_empty_table()

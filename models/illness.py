@@ -38,8 +38,8 @@ class Illness(db.Model):
     return [illness.medication for illness in self.illness_medication]
   
   @classmethod
-  def create_row(cls, name, description, remedy):
-    illness = cls(name=name, description=description, remedy=remedy )
+  def create_row(cls, name, description):
+    illness = cls(name=name, description=description )
     illness.save_db()
     return illness
   
