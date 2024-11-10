@@ -1,7 +1,7 @@
 from config import db, app
 from models.models import IllnessClassification, Illness, Classification
 from .illnesses_classifications_data import illness_classification_data
-
+from marshmallow_schemas import classifications_schema_many
 #Steps
 #STEP 1 -- COMPLETE
 #we want to convert the data structure to be as follows:
@@ -25,19 +25,13 @@ from .illnesses_classifications_data import illness_classification_data
 # --- create a function to return true if illness exist or return false if illness does
 #NOT exist
 
-#STEP 4
+#STEP 4 - COMPLETE
 #we want to create a record in the illnessclassifications table
 # #if the illness does NOT exist
 # ---create a function to create the record
 
-def get_full_records(model):
-  with app.app_context():
-    return model.query.all()
 
 
-def has_record(name, list):
-  for record in list:
-    return record.name == name
 
 #convert_data_to_dict function converts the list to the data structure below:
 #{
@@ -51,26 +45,35 @@ def convert_data_to_dict(list):
       converted_obj[obj.get('classification')] = obj.get('illnesses')
   return converted_obj
 
+def get_full_records(model):
+  with app.app_context():
+    return model.query.all()
 
+#has_record will return a bool, it only checks if a record exist in a list
+def has_record(attribute, value, list):
+  for instance in list:
+    if getattr(instance, attribute) == value:
+      return True
+  return False
+
+def retrieve_record(attribute, value, list):
+  for instance in list:
+    if getattr(instance, attribute) == value:
+      return instance
+  return None
+  
 
 def seed_illness_classification():
- 
   with app.app_context():
-    for classification_name, illness_list in illness_classification_data.items():
-      classification = Classification.query.filter_by(classification = classification_name).first()
+    convert_data = convert_data_to_dict(illness_classification_data)
+    classifications_collection = get_full_records(Classification)
+    illnesses_collection = get_full_records(Illness)
+    illnessclassifications_collection = get_full_records(IllnessClassification)
+    for classification, illnesses in convert_data.items():
+      for illness in illnesses:
+        illness_instance = retrieve_record('name', illness, illnesses_collection)
+        if not has_record('illness_id', illness_instance.id, illnessclassifications_collection):
+          classification_instance = retrieve_record('classification', classification, classifications_collection)
+          IllnessClassification.create_row(illness_instance, classification_instance)
 
-      for illness_name in illness_list:
-        illness = Illness.query.filter_by(name=illness_name).first()
-        #in illnessclassification table each illness should be assigned to a classification id number
-        #check if illness already exist in illnessesclassifications table 
-        illness_exist = IllnessClassification.query.filter_by(illness_id = illness.id ).first()
-        if not illness_exist:
-          IllnessClassification.create_row(illness, classification)
-
-
-# seed_illness_classification()  
-
-
-
-
-
+seed_illness_classification()  
