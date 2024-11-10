@@ -20,7 +20,7 @@ from .illnesses_classifications_data import illness_classification_data
 # ---create a function to return a collection of the relationship between illness and 
 #classifications in illnessclasssification table
 
-#STEP 3
+#STEP 3 - COMPLETE
 #we want check if that illness already exist in the illnessClassification table
 # --- create a function to return true if illness exist or return false if illness does
 #NOT exist
@@ -30,10 +30,14 @@ from .illnesses_classifications_data import illness_classification_data
 # #if the illness does NOT exist
 # ---create a function to create the record
 
-
 def get_full_records(model):
   with app.app_context():
     return model.query.all()
+
+
+def has_record(name, list):
+  for record in list:
+    return record.name == name
 
 #convert_data_to_dict function converts the list to the data structure below:
 #{
