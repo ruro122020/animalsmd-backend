@@ -13,7 +13,11 @@ Then install the dependencies from this repo:
 ```
 pipenv install
 ```
-
+Change the SQLALCHEMY_DATABASE_URI value to:
+Note: This is an example string. Change the username, password, and database name to your local postgresql login info. 
+```
+'postgresql://myuser:mypassword@localhost:5432/mydatabase'
+```
 Then run: 
 ```
 pipenv shell
