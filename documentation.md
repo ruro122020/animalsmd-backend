@@ -1,5 +1,35 @@
 Backend flask application using postgresql.
 
+Follow the instructions on this link to install and manage the python versions with pyenv.
+https://realpython.com/intro-to-pyenv/
+
+Python version used for this repo is 3.8.13
+
+Then install pipenv:
+```
+pip install pipenv
+```
+Then install the dependencies from this repo:
+```
+pipenv install
+```
+
+Then run: 
+```
+pipenv shell
+```
+Then run this command to start the application:
+```
+python app.py
+```
+
+Note: The super basic one from curriculum is: 
+```
+export FLASK_APP=app.py
+export FLASK_RUN_PORT=5555
+flask run
+```
+
 After installing packages, to use flask session object for cookies, do the following:
 
 1. Create a .env file in the root directory
