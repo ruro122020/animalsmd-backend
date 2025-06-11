@@ -7,7 +7,7 @@ Python version used for this repo is 3.8.13
 
 To set a specific python version to your local application:
 ```
-pyenv local 3.18.13
+pyenv local 3.8.13
 ```
 Then install pipenv:
 ```
