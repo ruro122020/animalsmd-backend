@@ -9,6 +9,10 @@ To set a specific python version to your local application:
 ```
 pyenv local 3.8.13
 ```
+To make sure the application is using the right version:
+```
+pyenv versions
+```
 Then install pipenv:
 ```
 pip install pipenv
